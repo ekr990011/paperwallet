@@ -1,0 +1,24 @@
+// Place all the styles related to the paperWallets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#front-page-background {
+   height: 100%;
+}
+
+#address-text-input {
+   margin-top: 1%;
+   width: 60%;
+}
+
+#front-page-background > div.col-md-12 {
+   margin-top: 2%;   
+}
+
+#front-page-background > div > span.label {
+   margin-top: 0.5%;
+   font-size: 150%;
+   background-color: #ffa82d;
+}
