@@ -4,7 +4,7 @@
 
 $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
-  $('#address-input-button').click -> 
+  $('#address-input-button').click ->
     address_text = $('#address-text-input').val()
     $('#address-text-input').val('')
     $('.boohoo').after('<div class="col-md-12"><span class="label label-warning">' + address_text + '</span></div>')
@@ -13,7 +13,12 @@ $(document).on 'turbolinks:load', ->
 $(document).on 'keypress', ->
   if event.keyCode is 13
     address_text = $('#address-text-input').val()
-    $('#address-text-input').val('')
-    $('.boohoo').after('<div class="col-md-12"><span class="label label-warning">' + address_text + '</span></div>')
-    $('#address-text-input').focus()
-  
+    console.log(address_text)
+    valid = WAValidator.validate(address_text, 'BTC')
+    console.log(valid)
+    if valid
+      $('#address-text-input').val('')
+      $('.boohoo').after('<div class="col-md-12"><span class="label label-warning">' + address_text + '</span></div>')
+      $('#address-text-input').focus()
+    
+    

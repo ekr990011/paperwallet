@@ -1,5 +1,8 @@
 {
   "name": "paperwallet",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jssha": "1.6.0",
+    "wallet-address-validator": "^0.1.1"
+  }
 }
