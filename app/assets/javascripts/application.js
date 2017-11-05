@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require jquery
-//= require bootstrap-sprockets
 //= require jssha
 //= require wallet-address-validator
 //= require turbolinks
