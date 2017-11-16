@@ -13,17 +13,45 @@
    width: 60%;
 }
 
+.boohoo {
+   margin-bottom: 1%;
+}
+
 #front-page-background > div.col-md-12 {
-   margin-top: 2%;   
+   margin-top: 1%;
+   margin-right: -15px;
+   margin-left: -15px;
+}
+
+#front-page-background > div {
+   margin-top: 0.5%;
 }
 
 #front-page-background > div > span.label {
-   margin-top: 0.5%;
-   font-size: 150%;
+   font-size: 125%;
+   margin-right: 0.5%;
+}
+
+#front-page-background > div > .label-warning {
    background-color: #ffa82d;
 }
 
-span.pull-right.glyphicon.glyphicon-remove {
+span.glyphicon.glyphicon-remove {
    color: red;
    font-size: 150%;
+   margin-left: 0.5%;
+}
+
+
+
+.grid-address {
+   font-size: 125%;
+}
+
+.grid-crypto {
+   font-size: 125%;
+}
+
+.grid-fiat {
+   font-size: 125%;
 }

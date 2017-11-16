@@ -1,6 +1,37 @@
-<div class="container col-md-12" id="front-page-background">
-  <div class="boohoo form-group">
-    <button class="btn btn-info btn-lg center-block" id="address-input-button">Enter a New Paper Wallet</button>
+<div class="container row col-md-12 js-address-removal" id="front-page-background">
+  <div class="header-controls">
+    <a href="#" class="export"><button class="btn btn-success btn-lg">Export Spreadsheet</button></a>
+    <button class="btn btn-info btn-lg" id="address-input-button">Enter a New Paper Wallet</button>
+  </div>
+  <div class="boohoo">
     <input class="center-block form-control" type="text" id="address-text-input">
   </div>
+  
+  <!--To do address div styling-->
+  <!--<div class="col-md-12 js-csv">-->
+  <!--  <div class="col-xs-7">-->
+  <!--    <p><span class="label label-warning grid-address">17Ldma5rA1HXKwxT6QR58pzywctn1ruGUQ</span></p>-->
+  <!--  </div>-->
+  <!--  <div class="col-xs-2">-->
+  <!--    <p><span class="label label-info grid-crypto js-btc-check">0.00 BTC</span></p>-->
+  <!--  </div>-->
+  <!--  <div class="col-xs-2">-->
+  <!--    <p><span class="label label-success grid-fiat js-fiat-check">0.00 USD</span></p>-->
+  <!--  </div>-->
+  <!--  <div class="col-xs-1">-->
+  <!--    <p><span class="glyphicon glyphicon-remove js-remove"></span></p>-->
+  <!--  </div>-->
+  <!--</div>-->
+  
+  
+</div>
+
+<div class="hide" id="dvData">
+  <table>
+    <tr>
+      <td>Address</td>
+      <td>BTC Amount</td>
+      <td>USD Amount</td>
+    </tr>
+  </table>
 </div>
