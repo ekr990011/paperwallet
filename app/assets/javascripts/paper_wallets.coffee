@@ -28,3 +28,16 @@ $(document).on 'keypress', ->
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('#front-page-background').remove()
   $('#address-text-input').focus()
+  
+  
+$(document).on 'click', '.js-check-balance', ->
+  $('#front-page-background > div.col-md-12').each ->
+    address_to_check = $(this).children('.col-xs-7').text()
+    $.getJSON("https://blockchain.info/balance?active=" + address_to_check + "&cors=true", (data, status) ->
+      console.log((data[address_to_check]["final_balance"])/100000000 + " " + status))
+
+
+
+# $.getJSON("https://blockchain.info/balance?active=18twMtJPUQQKpqoMcW8sVD852bUSR7NP2w&cors=true", function(data, status){ var json = data
+# console.log( json["18twMtJPUQQKpqoMcW8sVD852bUSR7NP2w"]["final_balance"] )
+# });    

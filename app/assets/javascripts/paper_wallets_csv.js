@@ -73,6 +73,12 @@ $(document).ready(function() {
     // child select
     // .children('span:nth-child(1)')
     
+    // $.get("https://blockchain.info/balance?active=18twMtJPUQQKpqoMcW8sVD852bUSR7NP2w&cors=true", function(data, status){ console.log( data ) }
+    // );
+    
+    // $.getJSON("https://blockchain.info/balance?active=18twMtJPUQQKpqoMcW8sVD852bUSR7NP2w&cors=true", function(data, status){ console.log(data)
+    // });
+    
     //$('#front-page-background > div.col-md-12').each(function(event){ console.log($('span').text()) });
     $('#front-page-background > div.col-md-12').each( function( index ) { 
       var address_csv = $(this).children("div:nth-child(1)").text();
