@@ -3,6 +3,7 @@
     <a href="#" class="export"><button class="btn btn-success btn-lg">Export Spreadsheet</button></a>
     <button class="btn btn-info btn-lg js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
     <button class="btn btn-default btn-lg js-check-balance">Check Balance(s)</button>
+    <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
   </div>
   <div class="boohoo">
     <input class="center-block form-control" type="text" id="address-text-input">
@@ -23,6 +24,22 @@
   <!--    <p><span class="glyphicon glyphicon-remove js-remove"></span></p>-->
   <!--  </div>-->
   <!--</div>-->
+  
+  <!--<div>-->
+    <!--<form class="form-horizontal well">-->
+      <!--<legend>-->
+        <!--<h3>-->
+          <!--<div id="title">HTML5 File API</div>-->
+        <!--</h3>-->
+      <!--</legend>-->
+      <!--<fieldset>-->
+        <!--<label for="csvFileInput"> <strong>CSV File:</strong>-->
+        <!--</label>-->
+        <!--<input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">-->
+      <!--</fieldset>-->
+    <!--</form>-->
+  <!--</div>-->
+        
   <div id="output">
     
   </div>

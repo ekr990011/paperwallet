@@ -40,7 +40,17 @@ $(document).on 'click', '.js-check-balance', ->
       addresses_to_check = address_to_check
     
   addresses_object_response = $.getJSON("https://blockchain.info/balance?active=" + addresses_to_check + "&cors=true", (data, status) ->
-    for key of data
-      console.log(key)
-      console.log(data[key]["final_balance"]/100000000)
-  )
+    address_object_keys = Object.keys(data)
+    address_object_keys_length = address_object_keys.length
+    
+    # address_btc_total = data[key]["final_balance"]/100000000
+    i = 0
+    while( i < (address_object_keys_length) )
+      console.log( address_object_keys[i] )
+      console.log( data[ address_object_keys[i] ]["final_balance"]/100000000 )
+      address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
+      $('#front-page-background > div.col-md-12.js-csv:eq(' + i + ') > div:nth-child(2) > p > span').text(address_btc_total + ' BTC')
+      i += 1
+      
+)
+  
