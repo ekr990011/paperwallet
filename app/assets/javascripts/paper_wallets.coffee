@@ -13,7 +13,7 @@ $(document).on 'turbolinks:load', ->
     valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('.boohoo').after(before_address_text + address_text + after_address_text)
+      $('#totals-for-everything').after(before_address_text + address_text + after_address_text)
       $('#address-text-input').focus()
       
 $(document).on 'keypress', ->
@@ -22,7 +22,7 @@ $(document).on 'keypress', ->
     valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('.boohoo').after(before_address_text + address_text + after_address_text)
+      $('#totals-for-everything').after(before_address_text + address_text + after_address_text)
       $('#address-text-input').focus()
 
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
@@ -51,6 +51,23 @@ $(document).on 'click', '.js-check-balance', ->
       address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
       $('#front-page-background > div.col-md-12.js-csv:eq(' + i + ') > div:nth-child(2) > p > span').text(address_btc_total + ' BTC')
       i += 1
-      
+     
+     
+     # fiat currency check 
+     
+     
+     
+     # btc totals
+    crypto_amount_length = $('#front-page-background > div.col-md-12.js-csv > div:nth-child(2) > p > span').length
+    
+    total_crypto_amount = 0
+    i = 0
+    while i < crypto_amount_length
+      total_crypto_amount += parseFloat($('#front-page-background > div.col-md-12.js-csv > div:nth-child(2) > p > span').eq(i).text())
+      i += 1
+    
+    $('#crypto-total-addresses').text(crypto_amount_length)
+    $('#crypto-total-amount').text(total_crypto_amount)
+     
 )
   
