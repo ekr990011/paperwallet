@@ -4,4 +4,8 @@ class PaperWalletsController < ApplicationController
       
    end
    
+   def template
+      
+   end
+   
 end

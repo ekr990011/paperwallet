@@ -14,8 +14,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "paper_wallets";
+ @import "template2.css";
  
- html, body, div.container-fluid{
+ // html, body, div.container-fluid{
+ //  height: 100%;
+ //  background-color: #00000087;
+// }
+
+html, body {
   height: 100%;
   background-color: #00000087;
 }
