@@ -4,8 +4,7 @@
 
 .header {
   height: 21rem;
-  width: 100vw;
-  background-color: pink;
+  /*width: 100vw;*/
 }
 
 .donation-img {
@@ -25,16 +24,26 @@
 }
 
 .content {
-  background-color: blue;
-  height: 79rem;
+  background-color: #464646;
+  height: 100%;
 }
 
 .left-side {
-  background-color: green;
-  height: 90%;
+  background-color: #464646;
+  height: 100%;
+}
+
+.left-side > .container {
+  margin-top: 1%;
 }
 
 .right-side {
-  background-color: yellow;
+  background-color: #464646;
   height: 100%;
+  overflow-y: auto;
+}
+
+#address-input-button {
+  margin-top: 1%;
+  
 }

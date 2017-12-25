@@ -3,12 +3,44 @@
     <h1 class="donation-address">17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</h1>
 </div>
 
-<!--<div class="content">-->
-  <!--<div class="left-side">-->
-    <!---->
-  <!--</div>-->
-  <!--<div class="right-side">-->
-    <!---->
-  <!--</div>-->
-  <!---->
-<!--</div>-->
+<div class="content">
+  <div class="left-side col-xs-3">
+    <div class="container">
+      <button class="btn btn-default btn-lg js-check-balance">Check Balance(s)</button><br /><br />
+      <a href="#" class="export"><button class="btn btn-success btn-lg">Export Spreadsheet</button></a><br /><br />
+      <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+    </div>
+  </div>
+  
+  <div class="right-side col-xs-9">
+    <div class="boohoo form-inline">
+      <input class="form-control" type="text" id="address-text-input">
+      <button class="btn btn-info js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
+    </div>
+    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+        	<td>Addresses</td>
+        	<td>BTC</td>
+        	<td>USD</td>
+        	<td>Remove</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
+          <td>1.00012345668</td>
+          <td>16,183</td>
+          <td><span class="glyphicon glyphicon-remove"></span></td>
+  		  </tr>
+  		  <tr>
+          <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
+          <td>1.00012345668</td>
+          <td>16,183</td>
+          <td><span class="glyphicon glyphicon-remove"></span></td>
+  		  </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
