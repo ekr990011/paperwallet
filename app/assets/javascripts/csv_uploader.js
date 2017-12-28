@@ -45,9 +45,7 @@ function drawOutput(lines){
     		var address_text_to_check = lines[i][j].replace(/['"]+/g, '');
     		var valid = WAValidator.validate(address_text_to_check, 'BTC');
     		if (valid){
-    			before_address_text = '<div class="col-md-12 js-csv"><div class="col-xs-7"><p><span class="label label-warning grid-address">'
-    			after_address_text = '</span></p></div><div class="col-xs-2"><p><span class="label label-info grid-crypto js-btc-check">0.00 BTC</span></p></div><div class="col-xs-2"><p><span class="label label-success grid-fiat js-fiat-check">0.00 USD</span></p></div><div class="col-xs-1"><p><span class="glyphicon glyphicon-remove js-remove"></span></p></div></div>'
-    			$('.boohoo').after(before_address_text + address_text_to_check + after_address_text);
+    			$('tbody').append('<tr><td>' + address_text_to_check + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
     		}
 		}
 	}
