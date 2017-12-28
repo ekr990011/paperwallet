@@ -2,8 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-before_address_text = '<div class="col-md-12 js-csv"><div class="col-xs-7"><p><span class="label label-warning grid-address">'
-after_address_text = '</span></p></div><div class="col-xs-2"><p><span class="label label-info grid-crypto js-btc-check">0.00 BTC</span></p></div><div class="col-xs-2"><p><span class="label label-success grid-fiat js-fiat-check">0.00 USD</span></p></div><div class="col-xs-1"><p><span class="glyphicon glyphicon-remove js-remove"></span></p></div></div>'
+
+# <tr>
+#             <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
+#             <td>1.00012345668</td>
+#             <td>16,183</td>
+#             <td><span class="glyphicon glyphicon-remove"></span></td>
+#   	  	  </tr>
+
+
+
 
 $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
@@ -13,7 +21,7 @@ $(document).on 'turbolinks:load', ->
     valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('#totals-for-everything').after(before_address_text + address_text + after_address_text)
+      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
       
 $(document).on 'keypress', ->
@@ -22,7 +30,7 @@ $(document).on 'keypress', ->
     valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('#totals-for-everything').after(before_address_text + address_text + after_address_text)
+      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
 
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
@@ -32,8 +40,8 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   
 $(document).on 'click', '.js-check-balance', ->
   addresses_to_check = ''
-  $('#front-page-background > div.col-md-12').each ->
-    address_to_check = $(this).children('.col-xs-7').text()
+  $('table > tbody > tr').each ->
+    address_to_check = $(this).children('td:first').text()
     unless addresses_to_check == ''
       addresses_to_check += '|' + address_to_check
     else
@@ -49,7 +57,7 @@ $(document).on 'click', '.js-check-balance', ->
       console.log( address_object_keys[i] )
       console.log( data[ address_object_keys[i] ]["final_balance"]/100000000 )
       address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
-      $('#front-page-background > div.col-md-12.js-csv:eq(' + i + ') > div:nth-child(2) > p > span').text(address_btc_total + ' BTC')
+      $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_btc_total + ' BTC')
       i += 1
      
      
@@ -58,12 +66,12 @@ $(document).on 'click', '.js-check-balance', ->
      
      
      # btc totals
-    crypto_amount_length = $('#front-page-background > div.col-md-12.js-csv > div:nth-child(2) > p > span').length
+    crypto_amount_length = $('table > tbody > tr > td:nth-child(2)').length
     
     total_crypto_amount = 0
     i = 0
     while i < crypto_amount_length
-      total_crypto_amount += parseFloat($('#front-page-background > div.col-md-12.js-csv > div:nth-child(2) > p > span').eq(i).text())
+      total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
       i += 1
     
     $('#crypto-total-addresses').text(crypto_amount_length)

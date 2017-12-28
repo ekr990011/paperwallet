@@ -23,9 +23,18 @@
   margin-left: 2.4rem;
 }
 
+.slogan {
+  float: left;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-left: 5.8rem;
+}
+
 .content {
   background-color: #464646;
   height: 100%;
+  margin-top: 1%;
 }
 
 .left-side {
@@ -43,7 +52,15 @@
   overflow-y: auto;
 }
 
+.table-hover tbody tr:hover td {
+    background: grey;
+}
+
 #address-input-button {
   margin-top: 1%;
   
+}
+
+.info-button {
+  margin-top: 1%;
 }

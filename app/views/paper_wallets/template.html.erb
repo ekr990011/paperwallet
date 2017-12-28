@@ -1,14 +1,19 @@
 <div class="header">
     <%= image_tag("download (1).png", class: "donation-img") %>
     <h1 class="donation-address">17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</h1>
+    <div>
+      <h3 class="slogan">Your Crypto Paper Wallet Checker!</h3>
+    </div>
 </div>
 
 <div class="content">
   <div class="left-side col-xs-3">
     <div class="container">
-      <button class="btn btn-default btn-lg js-check-balance">Check Balance(s)</button><br /><br />
-      <a href="#" class="export"><button class="btn btn-success btn-lg">Export Spreadsheet</button></a><br /><br />
-      <input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+      <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
+      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br /><br />
+      <label class="btn btn-lg btn-warning">
+        Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+      </label>
     </div>
   </div>
   
@@ -16,31 +21,33 @@
     <div class="boohoo form-inline">
       <input class="form-control" type="text" id="address-text-input">
       <button class="btn btn-info js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
+      <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
     </div>
-    
-    <table class="table table-hover">
-      <thead>
-        <tr>
-        	<td>Addresses</td>
-        	<td>BTC</td>
-        	<td>USD</td>
-        	<td>Remove</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
-          <td>1.00012345668</td>
-          <td>16,183</td>
-          <td><span class="glyphicon glyphicon-remove"></span></td>
-  		  </tr>
-  		  <tr>
-          <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
-          <td>1.00012345668</td>
-          <td>16,183</td>
-          <td><span class="glyphicon glyphicon-remove"></span></td>
-  		  </tr>
-      </tbody>
-    </table>
+    <div id="dvData">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+          	<td>Addresses : <span id="crypto-total-addresses"></span></td>
+          	<td>BTC : <span id="crypto-total-amount"></span></td>
+          	<td>USD</td>
+          	<td>Remove</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
+            <td></td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove"></span></td>
+  	  	  </tr>
+  	  	  <tr>
+            <td>1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN</td>
+            <td></td>
+            <td></td>
+            <td><span class="glyphicon glyphicon-remove"></span></td>
+  	  	  </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

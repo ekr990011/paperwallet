@@ -1,24 +1,4 @@
-# README
+# CryptoCurrency Paper Wallet Checker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A jquery powered crypto paper wallet checker that allows one to enter public keys from paper wallets and retrieve
+a current balance of both crypto and its USD equvillant.

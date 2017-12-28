@@ -70,13 +70,13 @@ $(document).ready(function() {
 
   // This must be a hyperlink
   $(".export").on('click', function(event) {
-    $('#front-page-background > div.col-md-12').each( function( index ) { 
-      var address_csv = $(this).children("div:nth-child(1)").text();
-      var address_btc = $(this).children("div:nth-child(2)").text();
-      var address_fiat = $(this).children("div:nth-child(3)").text();
+    // $('#front-page-background > div.col-md-12').each( function( index ) { 
+    //   var address_csv = $(this).children("div:nth-child(1)").text();
+    //   var address_btc = $(this).children("div:nth-child(2)").text();
+    //   var address_fiat = $(this).children("div:nth-child(3)").text();
       
-      $("#dvData > table > tbody").append("<tr><td>" + address_csv + "</td><td>" + address_btc + "</td><td>" + address_fiat + "</td></tr>");
-    });
+    //   $("#dvData > table > tbody").append("<tr><td>" + address_csv + "</td><td>" + address_btc + "</td><td>" + address_fiat + "</td></tr>");
+    // });
     
     // CSV
     var args = [$('#dvData>table'), 'export.csv'];
