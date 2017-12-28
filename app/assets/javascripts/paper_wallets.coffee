@@ -34,7 +34,7 @@ $(document).on 'keypress', ->
       $('#address-text-input').focus()
 
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
-  $(this).parentsUntil('#front-page-background').remove()
+  $(this).parentsUntil('tbody').remove()
   $('#address-text-input').focus()
   
   
@@ -46,36 +46,53 @@ $(document).on 'click', '.js-check-balance', ->
       addresses_to_check += '|' + address_to_check
     else
       addresses_to_check = address_to_check
+      
+  # fiat currency check 
+  $.getJSON("https://api.coinmarketcap.com/v1/ticker/bitcoin/", (result) ->
+    fiat_current_price = result[0].price_usd
+  
+    # crypto check  
+    addresses_object_response = $.getJSON("https://blockchain.info/balance?active=" + addresses_to_check + "&cors=true", (data, status) ->
+      address_object_keys = Object.keys(data)
+      address_object_keys_length = address_object_keys.length
+      
+      # address_btc_total = data[key]["final_balance"]/100000000
+      i = 0
+      while( i < (address_object_keys_length) )
+        # console.log( address_object_keys[i] )
+        # console.log( data[ address_object_keys[i] ]["final_balance"]/100000000 )
+        address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
+        
+        #crypto & fiat into address tr seperated by .next()
+        $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_btc_total).next().text((fiat_current_price * address_btc_total))
+        i += 1
+        
+     # btc totals  && fiat totals
+      crypto_amount_length = $('table > tbody > tr > td:nth-child(2)').length
+      
+      total_crypto_amount = 0
+      total_fiat_amount = 0
+      i = 0
+      while i < crypto_amount_length
+        total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
+        
+        total_fiat_amount += parseFloat($('table > tbody > tr > td:nth-child(3)').eq(i).text())
+        i += 1
+      
+      $('#crypto-total-addresses').text(crypto_amount_length)
+      $('#crypto-total-amount').text(total_crypto_amount)
+      
+      $('#fiat-total-amount').text(total_fiat_amount).addCommas()
+      $('#fiat-total-amount').prepend('$')
+      $('#fiat-total-amount').append('  |  $' + fiat_current_price)
+      
+      #addCommas in digits_function.js
+      $('table > tbody > tr > td:nth-child(3)').addCommas()
+      $('table > tbody > tr > td:nth-child(3)').prepend('$')
+    )
     
-  addresses_object_response = $.getJSON("https://blockchain.info/balance?active=" + addresses_to_check + "&cors=true", (data, status) ->
-    address_object_keys = Object.keys(data)
-    address_object_keys_length = address_object_keys.length
-    
-    # address_btc_total = data[key]["final_balance"]/100000000
-    i = 0
-    while( i < (address_object_keys_length) )
-      console.log( address_object_keys[i] )
-      console.log( data[ address_object_keys[i] ]["final_balance"]/100000000 )
-      address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
-      $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_btc_total + ' BTC')
-      i += 1
-     
-     
-     # fiat currency check 
-     
-     
-     
-     # btc totals
-    crypto_amount_length = $('table > tbody > tr > td:nth-child(2)').length
-    
-    total_crypto_amount = 0
-    i = 0
-    while i < crypto_amount_length
-      total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
-      i += 1
-    
-    $('#crypto-total-addresses').text(crypto_amount_length)
-    $('#crypto-total-amount').text(total_crypto_amount)
-     
-)
+  )     
+       
+       
+
   
