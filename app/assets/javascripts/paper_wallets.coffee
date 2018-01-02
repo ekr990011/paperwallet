@@ -36,8 +36,10 @@ $(document).on 'keypress', ->
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('tbody').remove()
   $('#address-text-input').focus()
+  monetaryCheck()
   
-  
+
+fiat_current_price = 0
 $(document).on 'click', '.js-check-balance', ->
   addresses_to_check = ''
   $('table > tbody > tr').each ->
@@ -68,31 +70,37 @@ $(document).on 'click', '.js-check-balance', ->
         i += 1
         
      # btc totals  && fiat totals
-      crypto_amount_length = $('table > tbody > tr > td:nth-child(2)').length
-      
-      total_crypto_amount = 0
-      total_fiat_amount = 0
-      i = 0
-      while i < crypto_amount_length
-        total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
-        
-        total_fiat_amount += parseFloat($('table > tbody > tr > td:nth-child(3)').eq(i).text())
-        i += 1
-      
-      $('#crypto-total-addresses').text(crypto_amount_length)
-      $('#crypto-total-amount').text(total_crypto_amount)
-      
-      $('#fiat-total-amount').text(total_fiat_amount).addCommas()
-      $('#fiat-total-amount').prepend('$')
-      $('#fiat-total-amount').append('  |  $' + fiat_current_price)
-      
-      #addCommas in digits_function.js
-      $('table > tbody > tr > td:nth-child(3)').addCommas()
-      $('table > tbody > tr > td:nth-child(3)').prepend('$')
+      monetaryCheck()
+      return 0
     )
-    
   )     
        
        
-
+monetaryCheck = () ->
+  crypto_amount_length = $('table > tbody > tr > td:nth-child(2)').length
+  total_crypto_amount = 0
+  total_fiat_amount = 0
   
+  # fix $ and , from messing up totals
+  $('table > tbody > tr > td:nth-child(3)').each ->
+  	totals_removed_special_characters = $(this).text().replace('$', '').replace(',', '')
+	  $(this).text(totals_removed_special_characters)
+  
+  i = 0
+  while i < crypto_amount_length
+    total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
+    
+    total_fiat_amount += parseFloat($('table > tbody > tr > td:nth-child(3)').eq(i).text())
+    console.log total_fiat_amount
+    i += 1
+  
+  $('#crypto-total-addresses').text(crypto_amount_length)
+  $('#crypto-total-amount').text(total_crypto_amount)
+  
+  $('#fiat-total-amount').text(total_fiat_amount).addCommas()
+  $('#fiat-total-amount').prepend('$')
+  $('#fiat-total-amount').append('  |  $' + addCommas(fiat_current_price))
+  
+  #addCommas in digits_function.js
+  $('table > tbody > tr > td:nth-child(3)').addCommas()
+  $('table > tbody > tr > td:nth-child(3)').prepend('$')
