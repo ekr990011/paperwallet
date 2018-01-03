@@ -5,6 +5,7 @@
 .header {
   height: 21rem;
   /*width: 100vw;*/
+  position: relative;
 }
 
 .donation-img {
@@ -74,9 +75,13 @@
 }
 
 #info-button-panel {
-  width: 296%;
+  /*width: 296%;*/
   /*height: 3rem;*/
   position: absolute;
   background-color: #867d7e;
   display: none;
+  bottom: 0;
+  right: 0.5%;
+  padding-right: 2%;
+  border-radius: 1rem;
 }
