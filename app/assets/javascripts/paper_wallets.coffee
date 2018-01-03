@@ -2,17 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
-# <tr>
-#             <td>17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8</td>
-#             <td>1.00012345668</td>
-#             <td>16,183</td>
-#             <td><span class="glyphicon glyphicon-remove"></span></td>
-#   	  	  </tr>
-
-
-
-
 $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
   address_count = $('#front-page-background > div.col-md-12').length
@@ -32,6 +21,10 @@ $(document).on 'keypress', ->
       $('#address-text-input').val('')
       $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
+      
+$(document).on 'click', '.info-box', ->
+  $('#info-button-panel').toggle()
+  console.log "hi"
 
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('tbody').remove()

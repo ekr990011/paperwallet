@@ -57,10 +57,26 @@
 }
 
 #address-input-button {
-  margin-top: 1%;
   
 }
 
+#address-text-input {
+   width: 60%;
+}
+
+.info-box {
+  display: inline-block;
+  position: relative;
+}
+
 .info-button {
-  margin-top: 1%;
+  
+}
+
+#info-button-panel {
+  width: 296%;
+  /*height: 3rem;*/
+  position: absolute;
+  background-color: #867d7e;
+  display: none;
 }

@@ -21,7 +21,13 @@
     <div class="boohoo form-inline">
       <input class="form-control" type="text" id="address-text-input">
       <button class="btn btn-info js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
-      <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
+      <div class="info-box">
+        <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
+        <div class="center-text" id="info-button-panel">
+            Public Keys only, private don't work.
+            One address at a time. Use spreadsheet for multiple import/export
+        </div>
+      </div>
     </div>
     <div id="dvData">
       <table class="table table-hover">
