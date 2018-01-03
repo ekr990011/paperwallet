@@ -24,8 +24,10 @@ $(document).on 'keypress', ->
       
 $(document).on 'click', '.info-box', ->
   $('#info-button-panel').toggle()
-  console.log "hi"
 
+$(document).on 'click', 'crypto-list', ->
+  $('crypto-list-dropdown').toggle()    
+  
 $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('tbody').remove()
   $('#address-text-input').focus()

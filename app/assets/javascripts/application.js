@@ -14,5 +14,6 @@
 //= require jquery
 //= require jssha
 //= require wallet-address-validator
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
