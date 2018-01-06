@@ -34,7 +34,14 @@
 
 .crypto-list {
   margin-top: 1rem;
-  
+}
+
+ul.crypto-list-dropdown {
+  background-color: #464646;
+}
+
+ul.crypto-list-dropdown > li > a {
+  color: white;
 }
 
 .content {
