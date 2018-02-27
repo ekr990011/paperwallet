@@ -1,53 +1,100 @@
-// Place all the styles related to the paperWallets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*.header, .content {*/
+/*  height: 100%;*/
+/*}*/
 
-
-
-#front-page-background {
-   height: 100%;
+.header {
+  height: 21rem;
+  /*width: 100vw;*/
+  position: relative;
 }
 
-
-.boohoo {
-   margin-bottom: 1%;
+.donation-img {
+  float: left;
+  width: 20rem;
+  height: auto;
+  /*margin-top: 0.5rem;*/
+  /*margin-left: 1rem;*/
 }
 
-#front-page-background > div.col-md-12 {
-   margin-top: 1%;
-   margin-right: -15px;
-   margin-left: -15px;
+.donation-address {
+  float: left;
+  font-size: 3.45rem;
+  font-weight: bold;
+  margin-top: 7rem;
+  margin-left: 2.4rem;
 }
 
-#front-page-background > div {
-   margin-top: 0.5%;
+.slogan {
+  float: left;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-left: 5.8rem;
 }
 
-#front-page-background > div > span.label {
-   font-size: 125%;
-   margin-right: 0.5%;
+.crypto-list {
+  margin-top: 1rem;
 }
 
-#front-page-background > div > .label-warning {
-   background-color: #ffa82d;
+ul.crypto-list-dropdown {
+  background-color: #464646;
 }
 
-span.glyphicon.glyphicon-remove {
-   color: red;
-   font-size: 150%;
-   margin-left: 0.5%;
+ul.crypto-list-dropdown > li > a {
+  color: white;
 }
 
-
-
-.grid-address {
-   font-size: 125%;
+.content {
+  background-color: #464646;
+  height: 100%;
+  margin-top: 1%;
 }
 
-.grid-crypto {
-   font-size: 125%;
+.left-side {
+  background-color: #464646;
+  height: 100%;
 }
 
-.grid-fiat {
-   font-size: 125%;
+.left-side > .container {
+  margin-top: 1%;
+}
+
+.right-side {
+  background-color: #464646;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.table-hover tbody tr:hover td {
+    background: grey;
+}
+
+#address-input-button {
+  
+}
+
+#address-text-input {
+   width: 60%;
+}
+
+.info-box {
+  display: inline-block;
+  position: relative;
+}
+
+.info-button {
+  
+}
+
+#info-button-panel {
+  /*width: 296%;*/
+  /*height: 3rem;*/
+  position: absolute;
+  background-color: #867d7e;
+  display: none;
+  bottom: 0;
+  right: 0.5%;
+  padding-right: 2%;
+  padding-top: 0.65%;
+  border-radius: 1rem;
 }
