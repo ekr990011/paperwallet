@@ -38,27 +38,20 @@ function errorHandler(evt) {
 	}
 }
 
+function validatePublicAddress(address_text){
+  var crypto_to_check = $('.crypto-symbol-js').text().slice(0, 3);
+  return WAValidator.validate(address_text, crypto_to_check);
+}
+
 function drawOutput(lines){
 	for (var i = 0; i < lines.length; i++) {
     	for (var j = 0; j < lines[i].length; j++) {
     		// console.log(lines[i][j]);
     		var address_text_to_check = lines[i][j].replace(/['"]+/g, '');
-    		var valid = WAValidator.validate(address_text_to_check, 'BTC');
+    		var valid = validatePublicAddress(address_text_to_check);
     		if (valid){
     			$('tbody').append('<tr><td>' + address_text_to_check + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
     		}
 		}
 	}
 }
-// 	Clear previous data
-// 	document.getElementById("output").innerHTML = "";
-// 	var table = document.createElement("table");
-// 	for (var i = 0; i < lines.length; i++) {
-		// var row = table.insertRow(-1);
-		// for (var j = 0; j < lines[i].length; j++) {
-		// 	var firstNameCell = row.insertCell(-1);
-		// 	firstNameCell.appendChild(document.createTextNode(lines[i][j]));
-		// }
-// 	}
-// 	document.getElementById("output").appendChild(table);
-// }

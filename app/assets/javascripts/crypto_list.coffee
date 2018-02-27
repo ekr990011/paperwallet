@@ -12,33 +12,13 @@ crypto_list_array = [{
             symbol: 'ppc',
             addressTypes: {prod: ['37', '75'], testnet: ['6f', 'c4']}
         },{
-            name: 'dogecoin',
-            symbol: 'doge',
-            addressTypes: {prod: ['1e', '16'], testnet: ['71', 'c4']}
-        },{
-            name: 'beavercoin',
-            symbol: 'bvc',
-            addressTypes: {prod: ['19', '05'], testnet: ['6f', 'c4']}
-        },{
             name: 'freicoin',
             symbol: 'frc',
             addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']}
         },{
-            name: 'protoshares',
-            symbol: 'pts',
-            addressTypes: {prod: ['38', '05'], testnet: ['6f', 'c4']}
-        },{
             name: 'megacoin',
             symbol: 'mec',
             addressTypes: {prod: ['32', '05'], testnet: ['6f', 'c4']}
-        },{
-            name: 'primecoin',
-            symbol: 'xpm',
-            addressTypes: {prod: ['17', '53'], testnet: ['6f', 'c4']}
-        },{
-            name: 'auroracoin',
-            symbol: 'aur',
-            addressTypes: {prod: ['17', '05'], testnet: ['6f', 'c4']}
         },{
             name: 'namecoin',
             symbol: 'nmc',
@@ -61,6 +41,7 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
   
   $('.crypto-list').html($(this).find('a').text() + ' <span class="caret"></span>')
   $('.crypto-symbol-js').text($(this).find('span').text().toUpperCase() + " : ")
+  $('.crypto-symbol-js').append('<span id="crypto-total-amount"></span>')
   $(this).remove()
   e.preventDefault()
   
