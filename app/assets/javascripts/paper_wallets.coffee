@@ -38,13 +38,6 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
 fiat_current_price = 0
 addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
-  $('table > tbody > tr').each ->
-    address_to_check = $(this).children('td:first').text()
-    unless addresses_to_check == ''
-      addresses_to_check += '|' + address_to_check
-    else
-      addresses_to_check = address_to_check
-      
   # fiat currency check 
   crypto_coinmarketcap = $('.crypto-list').text().trim().toLowerCase()
   $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + crypto_coinmarketcap + "/", (result) ->
