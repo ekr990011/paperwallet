@@ -4,7 +4,6 @@
 
 $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
-  address_count = $('#front-page-background > div.col-md-12').length
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val()
     valid = validatePublicAddress(address_text)
