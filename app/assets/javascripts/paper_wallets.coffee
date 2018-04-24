@@ -75,7 +75,7 @@ bitcoinCrypto = () ->
       address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
       
       #crypto & fiat into address tr seperated by .next()
-      $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_btc_total).next().text((fiat_current_price * address_btc_total))
+      $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_btc_total).next().text((fiat_current_price * address_btc_total).toFixed(2))
       i += 1
       
    # btc totals  && fiat totals
@@ -107,7 +107,8 @@ cryptoAddressAmount = () ->
         # console.log(data['balance'][address_object_keys[i]])
         address_crypto_total = data['balance'][address_object_keys[i]]
         #crypto & fiat into address tr seperated by .next()
-        $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_crypto_total).next().text((fiat_current_price * address_crypto_total))
+        
+        $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_crypto_total).next().text((fiat_current_price * address_crypto_total).toFixed(2))
       i += 1
       
    # btc totals  && fiat totals
