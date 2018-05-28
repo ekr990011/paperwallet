@@ -5,23 +5,34 @@
 $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
   $('#address-input-button').click ->
-    address_text = $('#address-text-input').val()
+    address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
     # valid = WAValidator.validate(address_text, 'BTC')
+    i = 1
+    $('table > tbody > tr').each ->
+      console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
+      if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
+        valid = false
+      i++ 
+        
     if valid
       $('#address-text-input').val('')
       $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
+    else
+      alert('Invalid Address, Please check for invalid or dupilcate address.')
       
 $(document).on 'keypress', ->
   if event.keyCode is 13
-    address_text = $('#address-text-input').val()
+    address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
     # valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
       $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
+    else
+      alert('Invalid Address, Please check for invalid or dupilcate address.')
       
 $(document).on 'click', '.info-box', ->
   $('#info-button-panel').toggle()

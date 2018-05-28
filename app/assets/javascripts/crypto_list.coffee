@@ -37,14 +37,18 @@ $(document).on 'turbolinks:load', ->
     i += 1
     
 $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
+  e.preventDefault()
   old_crypto_item = $('.crypto-list').text().trim()
   
   $('.crypto-list').html($(this).find('a').text() + ' <span class="caret"></span>')
   $('.crypto-symbol-js').text($(this).find('span').text().toUpperCase() + " : ")
   $('.crypto-symbol-js').append('<span id="crypto-total-amount"></span>')
   $(this).remove()
-  e.preventDefault()
-  
+  $('tbody').html('')
+  $('#crypto-total-addresses').text('')
+  $('#crypto-total-amount').text('')
+  $('#fiat-total-amount').text('')
+    
   i = 0
   for i  in [0...crypto_list_array.length]
     crypto_list_array_item = crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1)
