@@ -352,12 +352,12 @@ var QRCode;
 		var Drawing = function (el, htOption) {
     		this._bIsPainted = false;
     		this._android = _getAndroid();
-		
+		// 
 			this._htOption = htOption;
 			this._elCanvas = document.createElement("canvas");
 			this._elCanvas.width = htOption.width;
 			this._elCanvas.height = htOption.height;
-			el.appendChild(this._elCanvas);
+			// el.appendChild(this._elCanvas);
 			this._el = el;
 			this._oContext = this._elCanvas.getContext("2d");
 			this._bIsPainted = false;

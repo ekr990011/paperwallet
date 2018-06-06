@@ -3,10 +3,12 @@ crypto_list_array = [{
             name: 'bitcoin',
             symbol: 'btc',
             addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']}
+            donationAddress: 17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8
         },{
             name: 'litecoin',
             symbol: 'ltc',
             addressTypes: {prod: ['30', '05'], testnet: ['6f', 'c4']}
+            donationAddress: LY7bmtNotjgfsQ1q8dQLgrYeyNmDCyhfvF
         },{
             name: 'peercoin',
             symbol: 'ppc',
@@ -54,4 +56,15 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     crypto_list_array_item = crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1)
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span></li>')
+
+  makeQrcode()
   
+  
+makeQrcode = () ->
+  qrcode = new QRCode(document.getElementById("donation-img"), {
+    width: 1320,
+    height: 1320
+    })
+  elText = document.getElementById("donation-address").innerText
+  console.log(elText)
+  qrcode.makeCode(elText)
