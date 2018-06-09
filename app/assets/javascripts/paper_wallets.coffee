@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
-  makeQrcode()
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -24,7 +23,6 @@ $(document).on 'turbolinks:load', ->
       alert('Invalid Address, Please check for invalid or dupilcate address.')
       
 $(document).on 'keypress', ->
-  makeQrcode()
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
@@ -164,45 +162,3 @@ validatePublicAddress = (address_text) ->
   crypto_to_check = $('.crypto-symbol-js').text().slice(0, 3)
   WAValidator.validate(address_text, crypto_to_check)
   
- 
-makeQrcode = () ->
-  qrcode = new QRCode(document.getElementById("donation-img"), {
-    width: 1320,
-    height: 1320
-    })
-  elText = document.getElementById("donation-address").innerText
-  console.log(elText)
-  qrcode.makeCode(elText)
-
-
-  
-# <script type="text/javascript">
-# var qrcode = new QRCode(document.getElementById("qrcode"), {
-# 	width : 100,
-# 	height : 100
-# });
-
-# function makeCode () {		
-# 	var elText = document.getElementById("text");
-	
-# 	if (!elText.value) {
-# 		alert("Input a text");
-# 		elText.focus();
-# 		return;
-# 	}
-	
-# 	qrcode.makeCode(elText.value);
-# }
-
-# makeCode();
-
-# $("#text").
-# 	on("blur", function () {
-# 		makeCode();
-# 	}).
-# 	on("keydown", function (e) {
-# 		if (e.keyCode == 13) {
-# 			makeCode();
-# 		}
-# 	});
-# </script>
