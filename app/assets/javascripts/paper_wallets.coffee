@@ -162,3 +162,13 @@ validatePublicAddress = (address_text) ->
   crypto_to_check = $('.crypto-symbol-js').text().slice(0, 3)
   WAValidator.validate(address_text, crypto_to_check)
   
+
+makeQrcode = () ->
+ qrcode = new QRCode(document.getElementById("donation-img"), {
+   width: 1320,
+   height: 1320
+   })
+ elText = document.getElementById("donation-address").innerText
+ console.log(elText)
+ qrcode.makeCode(elText)
+  
