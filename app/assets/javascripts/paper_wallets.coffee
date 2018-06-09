@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
+  # makeQrcode()
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -23,6 +24,7 @@ $(document).on 'turbolinks:load', ->
       alert('Invalid Address, Please check for invalid or dupilcate address.')
       
 $(document).on 'keypress', ->
+  makeQrcode()
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
@@ -171,4 +173,37 @@ makeQrcode = () ->
  elText = document.getElementById("donation-address").innerText
  console.log(elText)
  qrcode.makeCode(elText)
+ 
+ 
+
+# function makeCode () {		
+# 	var elText = document.getElementById("text");
+	
+# 	if (!elText.value) {
+# 		alert("Input a text");
+# 		elText.focus();
+# 		return;
+# 	}
+	
+# 	qrcode.makeCode(elText.value);
+# }
+
+# makeCode();
+
+# $("#text").
+# 	on("blur", function () {
+# 		makeCode();
+# 	}).
+# 	on("keydown", function (e) {
+# 		if (e.keyCode == 13) {
+# 			makeCode();
+# 		}
+# 	});
+# </script>
+# </script>
+
+#qrcode = new QRCode(document.getElementById("donation-img"), {
+# 	width : 100,
+# 	height : 100
+# });
   
