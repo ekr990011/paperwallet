@@ -167,8 +167,8 @@ validatePublicAddress = (address_text) ->
 
 makeQrcode = () ->
  qrcode = new QRCode(document.getElementById("donation-img"), {
-   width: 1320,
-   height: 1320
+   width: 100,
+   height: 100
    })
  elText = document.getElementById("donation-address").innerText
  console.log('eltext')
