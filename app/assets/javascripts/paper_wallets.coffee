@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
-  # makeQrcode()
+  makeQrcode()
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -171,6 +171,7 @@ makeQrcode = () ->
    height: 1320
    })
  elText = document.getElementById("donation-address").innerText
+ console.log('eltext')
  console.log(elText)
  qrcode.makeCode(elText)
  
