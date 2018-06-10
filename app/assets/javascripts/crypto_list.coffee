@@ -2,10 +2,12 @@
 crypto_list_array = [{
             name: 'bitcoin',
             symbol: 'btc',
+            donationAddress: '17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8',
             addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']}
         },{
             name: 'litecoin',
             symbol: 'ltc',
+            donationAddress: 'LY7bmtNotjgfsQ1q8dQLgrYeyNmDCyhfvF',
             addressTypes: {prod: ['30', '05'], testnet: ['6f', 'c4']}
         },{
             name: 'peercoin',
@@ -48,6 +50,13 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
   $('#crypto-total-addresses').text('')
   $('#crypto-total-amount').text('')
   $('#fiat-total-amount').text('')
+  
+  i = 0
+  for i  in [0...crypto_list_array.length]
+    if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
+      console.log(crypto_list_array[i].donationAddress)
+      $('.donation-address').text(crypto_list_array[i].donationAddress)
+    i += 1
     
   i = 0
   for i  in [0...crypto_list_array.length]
