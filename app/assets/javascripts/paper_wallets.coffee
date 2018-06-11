@@ -171,8 +171,8 @@ makeQrcode = () ->
    height: 110
    })
  elText = document.getElementById("donation-address").innerText
- console.log('eltext')
- console.log(elText)
+ # console.log('eltext')
+ # console.log(elText)
  qrcode.makeCode(elText)
  
  

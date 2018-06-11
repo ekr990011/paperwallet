@@ -54,9 +54,11 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
   i = 0
   for i  in [0...crypto_list_array.length]
     if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
-      console.log(crypto_list_array[i].donationAddress)
+      # console.log(crypto_list_array[i].donationAddress)
       $('.donation-address').text(crypto_list_array[i].donationAddress)
     i += 1
+  makeQrcode()
+    
     
   i = 0
   for i  in [0...crypto_list_array.length]
@@ -64,3 +66,16 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span></li>')
   
+  
+makeQrcode = () ->
+  if $('.donation-img > img')
+    # console.log('not null')
+    $('.donation-img > img').remove()
+    $('.donation-img > canvas').remove()
+  qrcode = new QRCode(document.getElementById("donation-img"), {
+    width: 110,
+    height: 110
+    })
+  elText = document.getElementById("donation-address").innerText
+
+  qrcode.makeCode(elText)
