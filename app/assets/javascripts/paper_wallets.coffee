@@ -24,7 +24,6 @@ $(document).on 'turbolinks:load', ->
       alert('Invalid Address, Please check for invalid or dupilcate address.')
       
 $(document).on 'keypress', ->
-  makeQrcode()
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)

@@ -12,23 +12,13 @@ crypto_list_array = [{
         },{
             name: 'peercoin',
             symbol: 'ppc',
+            donationAddress: 'PQinj6iaWhbWTNrJFTAS4EkmzwoJAmzmxP',
             addressTypes: {prod: ['37', '75'], testnet: ['6f', 'c4']}
-        },{
-            name: 'freicoin',
-            symbol: 'frc',
-            addressTypes: {prod: ['00', '05'], testnet: ['6f', 'c4']}
-        },{
-            name: 'megacoin',
-            symbol: 'mec',
-            addressTypes: {prod: ['32', '05'], testnet: ['6f', 'c4']}
         },{
             name: 'namecoin',
             symbol: 'nmc',
+            donationAddress: 'NEqfKtDtGnEBXae5k7T1fivfXbA5j5oBHk',
             addressTypes: {prod: ['34'], testnet: []}
-        },{
-            name: 'biocoin',
-            symbol: 'bio',
-            addressTypes: {prod: ['19', '14'], testnet: ['6f', 'c4']}
         }]
                     
 $(document).on 'turbolinks:load', ->
