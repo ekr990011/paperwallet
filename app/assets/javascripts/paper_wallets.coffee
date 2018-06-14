@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
-  makeQrcode()
+  makeQrcode(document.getElementById("donation-address").innerText, document.getElementById("donation-img"))
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -48,7 +48,7 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   
 $(document).on 'click', '.cryptoAddress', ->
   $('.modal').attr('style', 'display: block;')
-  console.log($(this).context.innerText)
+  makeQrcode($(this).context.innerText, document.getElementById('modal-qrcode'))
   
 $(document).on 'click', '.close', ->
   $('.modal').attr('style', '')
@@ -170,46 +170,9 @@ validatePublicAddress = (address_text) ->
   WAValidator.validate(address_text, crypto_to_check)
   
 
-makeQrcode = () ->
- qrcode = new QRCode(document.getElementById("donation-img"), {
-   width: 110,
-   height: 110
-   })
- elText = document.getElementById("donation-address").innerText
- # console.log('eltext')
- # console.log(elText)
- qrcode.makeCode(elText)
- 
- 
-
-# function makeCode () {		
-# 	var elText = document.getElementById("text");
-	
-# 	if (!elText.value) {
-# 		alert("Input a text");
-# 		elText.focus();
-# 		return;
-# 	}
-	
-# 	qrcode.makeCode(elText.value);
-# }
-
-# makeCode();
-
-# $("#text").
-# 	on("blur", function () {
-# 		makeCode();
-# 	}).
-# 	on("keydown", function (e) {
-# 		if (e.keyCode == 13) {
-# 			makeCode();
-# 		}
-# 	});
-# </script>
-# </script>
-
-#qrcode = new QRCode(document.getElementById("donation-img"), {
-# 	width : 100,
-# 	height : 100
-# });
-  
+makeQrcode = (inputText, inputLocation) ->
+  qrcode = new QRCode(inputLocation, {
+    width: 110,
+    height: 110
+    })
+  qrcode.makeCode(inputText)
