@@ -173,6 +173,6 @@ validatePublicAddress = (address_text) ->
 makeQrcode = (inputText, inputLocation) ->
   qrcode = new QRCode(inputLocation, {
     width: 110,
-    height: 110
+    height: 110, 
     })
   qrcode.makeCode(inputText)
