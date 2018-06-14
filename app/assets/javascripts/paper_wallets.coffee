@@ -11,14 +11,14 @@ $(document).on 'turbolinks:load', ->
     # valid = WAValidator.validate(address_text, 'BTC')
     i = 1
     $('table > tbody > tr').each ->
-      console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
+      # console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
       i++ 
         
     if valid
       $('#address-text-input').val('')
-      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
+      $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
       alert('Invalid Address, Please check for invalid or dupilcate address.')
@@ -30,7 +30,7 @@ $(document).on 'keypress', ->
     # valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
+      $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
       alert('Invalid Address, Please check for invalid or dupilcate address.')
@@ -46,7 +46,13 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $('#address-text-input').focus()
   monetaryCheck()
   
-
+$(document).on 'click', '.cryptoAddress', ->
+  $('.modal').attr('style', 'display: block;')
+  console.log($(this).context.innerText)
+  
+$(document).on 'click', '.close', ->
+  $('.modal').attr('style', '')
+  
 fiat_current_price = 0
 addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
