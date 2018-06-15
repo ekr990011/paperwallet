@@ -47,6 +47,10 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   monetaryCheck()
   
 $(document).on 'click', '.cryptoAddress', ->
+  if $('.modal-qrcode > img')
+    console.log('not null')
+    $('#modal-qrcode > img').remove()
+    $('#modal-qrcode > canvas').remove()
   $('.modal').attr('style', 'display: block;')
   makeQrcode($(this).context.innerText, document.getElementById('modal-qrcode'))
   
