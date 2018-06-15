@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
+  makeQrcode(document.getElementById("donation-address").innerText, document.getElementById("donation-img"))
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -10,14 +11,14 @@ $(document).on 'turbolinks:load', ->
     # valid = WAValidator.validate(address_text, 'BTC')
     i = 1
     $('table > tbody > tr').each ->
-      console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
+      # console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
       i++ 
         
     if valid
       $('#address-text-input').val('')
-      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
+      $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
       alert('Invalid Address, Please check for invalid or dupilcate address.')
@@ -29,7 +30,7 @@ $(document).on 'keypress', ->
     # valid = WAValidator.validate(address_text, 'BTC')
     if valid
       $('#address-text-input').val('')
-      $('tbody').append('<tr><td>' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
+      $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
       alert('Invalid Address, Please check for invalid or dupilcate address.')
@@ -45,7 +46,13 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $('#address-text-input').focus()
   monetaryCheck()
   
-
+$(document).on 'click', '.cryptoAddress', ->
+  $('.modal').attr('style', 'display: block;')
+  makeQrcode($(this).context.innerText, document.getElementById('modal-qrcode'))
+  
+$(document).on 'click', '.close', ->
+  $('.modal').attr('style', '')
+  
 fiat_current_price = 0
 addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
@@ -162,3 +169,10 @@ validatePublicAddress = (address_text) ->
   crypto_to_check = $('.crypto-symbol-js').text().slice(0, 3)
   WAValidator.validate(address_text, crypto_to_check)
   
+
+makeQrcode = (inputText, inputLocation) ->
+  qrcode = new QRCode(inputLocation, {
+    width: 110,
+    height: 110, 
+    })
+  qrcode.makeCode(inputText)
