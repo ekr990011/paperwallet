@@ -46,7 +46,7 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
       # console.log(crypto_list_array[i].donationAddress)
       $('.donation-address').text(crypto_list_array[i].donationAddress)
-      $('.donation-address').append('<span class="glyphicon glyphicon-copy"></span>')
+      $('.donation-address').append(' <span class="glyphicon glyphicon-copy"></span>')
     i += 1
   makeQrcode()
     
