@@ -21,7 +21,7 @@ namespace :twitter do
   uri = URI(url)
   response = Net::HTTP.get(uri)
   exchange_data = JSON.parse(response)
-  puts exchange_data[0]
+  puts exchange_data["data"][0]["symbol"]
     
 #  client.update("testing 123")
     
