@@ -123,6 +123,7 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
       $('.crypto-list').html($(this).find('a').text() + ' <span class="caret"></span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>')
       $('.donation-address').text(crypto_list_array[i].donationAddress)
+      $('.donation-address').append(' <span class="glyphicon glyphicon-copy"></span>')
     crypto_list_array_item = crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1)
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>' + '</li>')

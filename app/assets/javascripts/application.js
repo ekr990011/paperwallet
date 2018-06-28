@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require jssha
+//= require clipboard-polyfill/build/clipboard-polyfill
 //= require wallet-address-validator/dist/wallet-address-validator
 //= require bootstrap-sprockets
 //= require turbolinks

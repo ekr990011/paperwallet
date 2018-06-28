@@ -28,6 +28,13 @@ $(document).on 'keypress', ->
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
     # valid = WAValidator.validate(address_text, 'BTC')
+    i = 1
+    $('table > tbody > tr').each ->
+      # console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
+      if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
+        valid = false
+      i++ 
+    
     if valid
       $('#address-text-input').val('')
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
@@ -46,6 +53,13 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $('#address-text-input').focus()
   monetaryCheck()
   
+$(document).on 'click', 'span.glyphicon.glyphicon-copy', ->
+  copy_text = $('.donation-address').text().trim()
+  clipboard.writeText(copy_text)
+  $('.header').append('<div class="alert alert-warning">Copied to Clipboard</div>')
+  # window.setTimeout (-> $('.alert-warning').remove()), 2500
+  $('.alert-warning').fadeOut(4500, -> $(this).remove() )
+
 $(document).on 'click', '.cryptoAddress', ->
   $('.modal').attr('style', 'display: block;')
   makeQrcode($(this).context.innerText, document.getElementById('modal-qrcode'))
