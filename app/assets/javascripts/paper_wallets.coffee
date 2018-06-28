@@ -57,9 +57,9 @@ fiat_current_price = 0
 addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
   # fiat currency check 
-  crypto_coinmarketcap = $('.crypto-list').text().trim().toLowerCase()
-  $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + crypto_coinmarketcap + "/", (result) ->
-    fiat_current_price = result[0].price_usd
+  crypto_coinmarketcap = $('.crypto-list > div').text().trim().toLowerCase()
+  $.getJSON("https://api.coinmarketcap.com/v2/ticker/" + crypto_coinmarketcap + "/", (result) ->
+    fiat_current_price = result.data.quotes.USD.price
   
     # crypto check
     crypto = $('.crypto-symbol-js').text().slice(0, 3).toLowerCase()
@@ -159,7 +159,8 @@ monetaryCheck = () ->
   #addCommas in digits_function.js
   $('#fiat-total-amount').text(total_fiat_amount).addCommas()
   $('#fiat-total-amount').prepend('$')
-  $('#fiat-total-amount').append('  |  $' + addCommas(fiat_current_price))
+  crypto_symbol = $('.crypto-symbol-js').text().slice(0, 3)
+  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price))
   
   $('table > tbody > tr > td:nth-child(3)').addCommas()
   $('table > tbody > tr > td:nth-child(3)').prepend('$')

@@ -2,12 +2,23 @@
 # yarn lockfile v1
 
 
-jssha@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/jssha/-/jssha-1.6.0.tgz#67acf0b90fdebb9bb3fe3a44e6016cf2cf0670b9"
-
-wallet-address-validator@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/wallet-address-validator/-/wallet-address-validator-0.1.1.tgz#e7023b702d6307e82e80a6cfaaaaa0a9c37df1b7"
+base-x@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.4.tgz#94c1788736da065edb1d68808869e357c977fa77"
   dependencies:
-    jssha "1.6.0"
+    safe-buffer "^5.0.1"
+
+jssha@2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/jssha/-/jssha-2.3.1.tgz#147b2125369035ca4b2f7d210dc539f009b3de9a"
+
+safe-buffer@^5.0.1:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
+
+wallet-address-validator@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/wallet-address-validator/-/wallet-address-validator-0.1.7.tgz#e205819981597a1df4790c572f68ea5a36452915"
+  dependencies:
+    base-x "^3.0.4"
+    jssha "2.3.1"
