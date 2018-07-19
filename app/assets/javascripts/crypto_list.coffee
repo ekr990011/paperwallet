@@ -2,38 +2,42 @@
 crypto_list_array = [{
             name: 'bitcoin',
             symbol: 'btc',
-            donationAddress: '17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8',
+            donationAddress: '1337ipJbP7U9mi9cdLngL3g5Napum7tWzM',
             id: 1
         },{
             name: 'ethereum',
             symbol: 'eth',
+            donationAddress: '0x94483b123b422d2Ab61fC459118667513956144E',
             id: 1027
         },{
             name: 'ripple',
             symbol: 'xrp',
+            donationAddress: 'rJ8o2N7MajfpCVDJHyjWcu7yo3knvHHXfN',
             id: 52
         },{
             name: 'bitcoincash',
             symbol: 'bch',
+            donationAddress: '1GDLQvcZY8TS56gf6X8Hm94B8wRkbtV438',
             id: 1831
         },{
             name: 'litecoin',
             symbol: 'ltc',
-            donationAddress: 'LY7bmtNotjgfsQ1q8dQLgrYeyNmDCyhfvF',
+            donationAddress: 'LWcXUB6ny88tK49TK1V6KprE5oDcJ1zJhx',
             id: 2
         },{
             name: 'peercoin',
             symbol: 'ppc',
-            donationAddress: 'PQinj6iaWhbWTNrJFTAS4EkmzwoJAmzmxP',
+            donationAddress: 'PMWKyz4Sr8nKZnjABsWKnxJHCnjKo4garm',
             id: 5
         },{
             name: 'namecoin',
             symbol: 'nmc',
-            donationAddress: 'NEqfKtDtGnEBXae5k7T1fivfXbA5j5oBHk',
+            donationAddress: 'NKX2XRAnucmc8RBTV9oZo8kgx7NP6K52JV',
             id: 3
         },{
             name: 'dogecoin',
             symbol: 'doge',
+            donationAddress: 'DND5TbT834xsjBre1c6pREJYWMDWKAL1rc',
             id: 74
         },{
             name: 'ethereumclassic',
@@ -42,14 +46,17 @@ crypto_list_array = [{
         },{
             name: 'vertcoin',
             symbol: 'vtc',
+            donationAddress: 'VhuhgKpVwgqyuNCsJpEjcWxxKyP9rm9Aod',
             id: 99
         },{
             name: 'bitcoingold',
             symbol: 'btg',
+            donationAddress: 'GMbBJi6x6osdKnCnQUZqUWgD3fGztzik1h',
             id: 2083
         },{
             name: 'dash',
             symbol: 'dash',
+            donationAddress: 'XckPoTubxQ8PbY9VAYCnSZarpsq6BFNUHA',
             id: 131
         },{
             name: 'neo',
@@ -74,6 +81,7 @@ crypto_list_array = [{
         },{
             name: 'bitcoinprivate',
             symbol: 'btcp',
+            donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
             id: 2575
         },{
             name: 'zencash',
@@ -82,6 +90,7 @@ crypto_list_array = [{
         },{
             name: 'zcash',
             symbol: 'zec',
+            donationAddress: 't1d29PNHtTJHHE4jMeLJFrmRcHJNhyYxZZC',
             id: 1437
         },{
             name: 'zclassic',
@@ -94,6 +103,7 @@ crypto_list_array = [{
         },{
             name: 'digibyte',
             symbol: 'dgb',
+            donationAddress: 'DKkftwDYUQpMZCcDmcgtbLnCk5sf1qV9Hi',
             id: 109
         }]
                     
