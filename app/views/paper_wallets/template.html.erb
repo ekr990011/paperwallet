@@ -1,10 +1,8 @@
 <div class="header col-xs-12">
-    <div class="qroutline" id="qroutline">
-      <div class="donation-img" id="donation-img">
-      </div>
+    <div class="donation-img" id="donation-img">
     </div>
     <div>
-      <h1 class="donation-address", id="donation-address">17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8 
+      <h1 class="donation-address", id="donation-address">1337ipJbP7U9mi9cdLngL3g5Napum7tWzM 
         <span class="glyphicon glyphicon-copy"></span>
       </h1>
     </div>
@@ -32,12 +30,13 @@
 
 <div class="content">
   <div class="left-side col-xs-3">
-    <div class="container">
+    <div class="container form-inline">
       <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
-      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br /><br />
       <label class="btn btn-lg btn-warning">
         Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
-      </label>
+      </label><br /><br />
+      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br /><br />
+      <input class="form-control" type="text" id="export-input">
     </div>
   </div>
   
@@ -49,10 +48,16 @@
         <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
       </div>
     </div>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div id='modal-qrcode'></div>
-        <span class="close">&times;</span>
+    <div class="modal fade bs-example-modal-sm" index="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div id='modal-qrcode'></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="dvData">

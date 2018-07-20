@@ -42,6 +42,7 @@ crypto_list_array = [{
         },{
             name: 'ethereumclassic',
             symbol: 'etc',
+            donationAddress: 'Ethereum CLassic Paper Wallet Checker!',
             id: 1321
         },{
             name: 'vertcoin',
@@ -61,22 +62,27 @@ crypto_list_array = [{
         },{
             name: 'neo',
             symbol: 'neo',
+            donationAddress: 'Neo Paper Wallet Checker!',
             id: 1376
         },{
             name: 'neogas',
             symbol: 'gas',
+            donationAddress: 'Neo Gas Paper Wallet Checker!',
             id: 1785
         },{
             name: 'qtum',
             symbol: 'qtum',
+            donationAddress: 'Qtum Paper Wallet Checker!',
             id: 1684
         },{
             name: 'komodo',
             symbol: 'kmd',
+            donationAddress: 'Komodo Paper Wallet Checker!',
             id: 1521
         },{
             name: 'bitcoinz',
             symbol: 'btcz',
+            donationAddress: 'Bitcoinz Paper Wallet Checker!',
             id: 2041
         },{
             name: 'bitcoinprivate',
@@ -86,6 +92,7 @@ crypto_list_array = [{
         },{
             name: 'zencash',
             symbol: 'zen',
+            donationAddress: 'Zen Paper Wallet Checker!',
             id: 1698
         },{
             name: 'zcash',
@@ -95,10 +102,12 @@ crypto_list_array = [{
         },{
             name: 'zclassic',
             symbol: 'zcl',
+            donationAddress: 'ZClassic Paper Wallet Checker!',
             id: 1447
         },{
             name: 'decred',
             symbol: 'dcr',
+            donationAddress: 'Decred Paper Wallet Checker!',
             id: 1168
         },{
             name: 'digibyte',
