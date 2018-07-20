@@ -30,12 +30,13 @@
 
 <div class="content">
   <div class="left-side col-xs-3">
-    <div class="container form-inline">
+    <div class="container form-inline col-xs-12">
       <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
       <label class="btn btn-lg btn-warning">
         Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
       </label><br /><br />
-      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br /><br />
+      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br />
+      <h5 class="export-filename">Export Filename : </h5>
       <input class="form-control" type="text" id="export-input">
     </div>
   </div>
