@@ -144,7 +144,7 @@ ul.crypto-list-dropdown > li > a {
 }
 
 .donation-address > .glyphicon-copy {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
 .alert-copy {
@@ -167,4 +167,10 @@ ul.crypto-list-dropdown > li > a {
   font-size: 1.64rem;
   font-weight: 600;
   margin-left: 3rem;
+}
+
+.glyphicon:hover {
+  background-color: #9d9d9d;
+  border: 0.1rem inset #b9acac;
+  border-radius: 0.3rem;
 }

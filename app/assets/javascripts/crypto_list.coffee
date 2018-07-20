@@ -156,9 +156,12 @@ makeQrcode = () ->
     $('.donation-img > img').remove()
     $('.donation-img > canvas').remove()
   qrcode = new QRCode(document.getElementById("donation-img"), {
-    width: 110,
-    height: 110
+    width: 1320,
+    height: 1320
     })
   elText = document.getElementById("donation-address").innerText
-
-  qrcode.makeCode(elText)
+  
+  if $(".donation-address:contains('!')").text() == ""
+    $('#donation-img').hide()
+    qrcode.makeCode(elText)
+    $('#donation-img').show(1000)
