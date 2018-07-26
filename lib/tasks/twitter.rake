@@ -19,11 +19,16 @@ namespace :twitter do
   cryptoIdArray = [ 1, 2, 3, 1831, 52, 2083, 2575, 2041, 1027, 1321, 1437, 131, 1376, 1785, 1521]
   
 # The cryptoIdArray contains the Coinmarketcap Ids for the cryptocurrencies  
-  cryptoIdArray.each do |id|
+# cryptoIdArray.each do |id|
+    id = cryptoIdArray[rand(15)]
+    puts "id is #{id}"
     url = "https://api.coinmarketcap.com/v2/ticker/#{id}/?structure=array"
     uri = URI(url)
     response = Net::HTTP.get(uri)
     exchange_data = JSON.parse(response)
+    
+    puts exchange_data
+    
     name = exchange_data["data"][0]["name"]
     symbol = exchange_data["data"][0]["symbol"]
     price = exchange_data["data"][0]["quotes"]["USD"]["price"]
@@ -33,9 +38,9 @@ namespace :twitter do
     else
       direction = "DOWN"
     end
-    tweet = "#{name} price #{price}, #{direction} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at www.12345.com" 
+    tweet = "#{name} price #{price}, #{direction} #{percentChange} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at www.12345.com" 
     puts tweet
-  end 
+ # end 
 #  client.update("testing 123")
     
     
