@@ -1,25 +1,24 @@
 <div class="header col-xs-12">
-  <%# image_tag("download (1).png", class: "donation-img") %>
-  <div class="qroutline" id="qroutline">
     <div class="donation-img" id="donation-img">
     </div>
-  </div>
-  <div>
-    <h1 class="donation-address", id="donation-address">17g8t7pZhTz3J6qUXKKeFMbFG1vMLE7Gb8 
-      <span class="glyphicon glyphicon-copy"></span>
-    </h1>
-  </div>
-  
-  <div class="col-xs-6">
-    <h3 class="slogan">Your Crypto Paper Wallet Checker!</h3>
-    <div class="btn-group pull-right">
-      <button type="button" class="btn btn-default dropdown-toggle crypto-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Bitcoin <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu crypto-list-dropdown">
-      </ul>
+    <div>
+      <h1 class="donation-address", id="donation-address">1337ipJbP7U9mi9cdLngL3g5Napum7tWzM 
+        <span class="glyphicon glyphicon-copy"></span>
+      </h1>
+    </div>
+    <div class="col-xs-6">
+      <h3 class="slogan">Your Crypto Paper Wallet Checker !</h3>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle crypto-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Bitcoin <span class="caret"></span><div class="hidden">1</div>
+        </button>
+        <ul class="dropdown-menu crypto-list-dropdown scrollable-menu">
+        </ul>
+      </div>
+      <h3 id="fiat-current-price"></h3>
     </div>
   </div>
+  
   <div class="" id="info-button-panel">
     <ul class="">
       <li>Public Keys Only</li>
@@ -31,12 +30,14 @@
 
 <div class="content">
   <div class="left-side col-xs-3">
-    <div class="container">
+    <div class="container form-inline col-xs-12">
       <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
-      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br /><br />
       <label class="btn btn-lg btn-warning">
         Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
-      </label>
+      </label><br /><br />
+      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br />
+      <h5 class="export-filename">Export Filename : </h5>
+      <input class="form-control" type="text" id="export-input">
     </div>
   </div>
   
@@ -48,10 +49,16 @@
         <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
       </div>
     </div>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div id='modal-qrcode'></div>
-        <span class="close">&times;</span>
+    <div class="modal fade bs-example-modal-sm" index="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div id='modal-qrcode'></div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="dvData">
