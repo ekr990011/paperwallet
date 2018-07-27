@@ -10,6 +10,7 @@ $(document).on 'turbolinks:load', ->
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
+    duplicate = false
     i = 1
     $('table > tbody > tr').each ->
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
