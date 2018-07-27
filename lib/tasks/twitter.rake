@@ -35,7 +35,7 @@ namespace :twitter do
     else
       direction = "DOWN"
     end
-    tweet = "#{name} price #{price}, #{direction} #{percentChange} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at http://www.1337ipjbp7u9mi9cdlngl3g5napum7twzm.com" 
+    tweet = "#{name} price #{price}, #{direction} #{percentChange} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at https://goo.gl/oGkpTe" 
     puts tweet
 
 #  end 
