@@ -42,7 +42,7 @@ crypto_list_array = [{
         },{
             name: 'ethereumclassic',
             symbol: 'etc',
-            donationAddress: 'Ethereum CLassic Paper Wallet Checker!',
+            donationAddress: 'Ethereum Classic Paper Wallet Checker!',
             id: 1321
         },{
             name: 'vertcoin',

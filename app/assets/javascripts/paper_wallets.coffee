@@ -28,18 +28,23 @@ $(document).on 'keypress', ->
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
+    duplicate = false
     i = 1
     $('table > tbody > tr').each ->
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
+        duplicate = true
       i++ 
     
     if valid
       $('#address-text-input').val('')
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
+    else if duplicate
+      $('.header').append('<div class="alert alert-warning alert-invalid">Duplicate Address. Please Check!</div>')
+      $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
     else
-      $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please check for invalid or dupilcate address.</div>')
+      $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address. Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
       
 $(document).on 'click', '.info-box', ->
@@ -48,7 +53,7 @@ $(document).on 'click', '.info-box', ->
 $(document).on 'click', 'crypto-list', ->
   $('crypto-list-dropdown').toggle()    
   
-$(document).on 'click', '.info-box > span.glyphicon.glyphicon-remove', ->
+$(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('tbody').remove()
   $('#address-text-input').focus()
   monetaryCheck()
