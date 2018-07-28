@@ -8,25 +8,20 @@
   position: relative;
 }
 
-.qroutline {
+.donation-img {
   float: left;
-  width:150px; 
-  height:150px;
-  background-color: white;
+  margin: auto;
+  width: 18rem;
+  height: auto;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
 }
 
-.donation-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1.7rem;
-  width: 70%;
-  /*float: left;
+.donation-img > img {
+  width: 19rem;
   margin: auto;
-  width: 20rem;
-  height: auto;*/
-  /*margin-top: 0.5rem;*/
-  /*margin-left: 1rem;*/
+  border: 0.3rem solid white;
+  border-radius: 0.3rem;
 }
 
 .donation-address {
@@ -42,6 +37,14 @@
   font-size: 1.75rem;
   font-weight: bold;
   margin-top: 2rem;
+  margin-left: 5.8rem;
+}
+
+#fiat-current-price {
+  float: left;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 1rem;
   margin-left: 5.8rem;
 }
 
@@ -116,53 +119,58 @@ ul.crypto-list-dropdown > li > a {
   color: #42f0ef;
 }
 
-.modal {
-    display: none; /* Hidden by default */
-    // position: fixed; /* Stay in place */
-    margin: auto;
-    z-index: 1; /* Sit on top */
-    padding-top: 2.5rem; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 15%; /* Full width */
-    height: 40%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+#modal-qrcode > img {
+  width: 100%;
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+.modal-title {
+  color: black;
+  font-size: 1.32rem;
+  font-weight: 600;
 }
 
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.modal-title > .glyphicon-copy {
+  margin-left: 12.3rem;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.modal-title > .alert-warning {
+  text-align: center;
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
 
 .donation-address > .glyphicon-copy {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
 }
 
-.alert-warning {
+.alert-copy {
   position: absolute;
+  z-index: 10;
   top: 0;
   margin-left: 43%;
   font-size: 1.4rem;
+}
+
+.alert-invalid {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  margin-left: 35%;
+  font-size: 1.4rem;
+}
+
+.export-filename {
+  font-size: 1.64rem;
+  font-weight: 600;
+  margin-left: 3rem;
+}
+
+.glyphicon:hover {
+  background-color: #9d9d9d;
+  border: 0.1rem inset #b9acac;
+  border-radius: 0.3rem;
 }

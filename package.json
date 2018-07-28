@@ -2,8 +2,8 @@
   "name": "paperwallet",
   "private": true,
   "dependencies": {
+    "wallet-address-validator": "^0.1.7",
     "clipboard-polyfill": "^2.4.7",
-    "jssha": "1.6.0",
-    "wallet-address-validator": "^0.1.1"
+    "jssha": "1.6.0"
   }
 }

@@ -3,15 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'turbolinks:load', ->
+  $('#donation-img').hide()
   makeQrcode(document.getElementById("donation-address").innerText, document.getElementById("donation-img"))
+  $('#donation-img').show(1000)
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
-    # valid = WAValidator.validate(address_text, 'BTC')
     i = 1
     $('table > tbody > tr').each ->
-      # console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
       i++ 
@@ -21,16 +21,15 @@ $(document).on 'turbolinks:load', ->
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
-      alert('Invalid Address, Please check for invalid or dupilcate address.')
+      $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please check for invalid or dupilcate address.</div>')
+      $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
       
 $(document).on 'keypress', ->
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
-    # valid = WAValidator.validate(address_text, 'BTC')
     i = 1
     $('table > tbody > tr').each ->
-      # console.log($('table > tbody > tr:nth-child(' + i + ') > td').text())
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
       i++ 
@@ -40,7 +39,8 @@ $(document).on 'keypress', ->
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else
-      alert('Invalid Address, Please check for invalid or dupilcate address.')
+      $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please check for invalid or dupilcate address.</div>')
+      $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
       
 $(document).on 'click', '.info-box', ->
   $('#info-button-panel').toggle()
@@ -48,21 +48,31 @@ $(document).on 'click', '.info-box', ->
 $(document).on 'click', 'crypto-list', ->
   $('crypto-list-dropdown').toggle()    
   
-$(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
+$(document).on 'click', '.info-box > span.glyphicon.glyphicon-remove', ->
   $(this).parentsUntil('tbody').remove()
   $('#address-text-input').focus()
   monetaryCheck()
   
-$(document).on 'click', 'span.glyphicon.glyphicon-copy', ->
+$(document).on 'click', '.donation-address > span.glyphicon.glyphicon-copy', ->
   copy_text = $('.donation-address').text().trim()
   clipboard.writeText(copy_text)
-  $('.header').append('<div class="alert alert-warning">Copied to Clipboard</div>')
-  # window.setTimeout (-> $('.alert-warning').remove()), 2500
-  $('.alert-warning').fadeOut(4500, -> $(this).remove() )
+  $('.header').append('<div class="alert alert-warning alert-copy">Copied to Clipboard</div>')
+  $('#address-text-input').focus()
+  $('.alert-copy').fadeOut(4500, -> $(this).remove() )
 
 $(document).on 'click', '.cryptoAddress', ->
-  $('.modal').attr('style', 'display: block;')
+  $('#modal-qrcode').empty()
+  $('.modal-title').empty()
+  $('.modal').modal('show')
+  $('.modal-title').text($(this).text())
+  $('.modal-title').append('<br><span class="glyphicon glyphicon-copy"></span>')
   makeQrcode($(this).context.innerText, document.getElementById('modal-qrcode'))
+  
+$(document).on 'click', '.modal-title > span.glyphicon-copy', ->
+  copy_text = $('.modal-title').text()
+  clipboard.writeText(copy_text)
+  $('.modal-title').append('<div class="alert alert-warning">Copied to Clipboard</div>')
+  $('.modal-title > .alert-warning').fadeOut(4500, -> $(this).remove() )
   
 $(document).on 'click', '.close', ->
   $('.modal').attr('style', '')
@@ -71,9 +81,9 @@ fiat_current_price = 0
 addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
   # fiat currency check 
-  crypto_coinmarketcap = $('.crypto-list').text().trim().toLowerCase()
-  $.getJSON("https://api.coinmarketcap.com/v1/ticker/" + crypto_coinmarketcap + "/", (result) ->
-    fiat_current_price = result[0].price_usd
+  crypto_coinmarketcap = $('.crypto-list > div').text().trim().toLowerCase()
+  $.getJSON("https://api.coinmarketcap.com/v2/ticker/" + crypto_coinmarketcap + "/", (result) ->
+    fiat_current_price = result.data.quotes.USD.price
   
     # crypto check
     crypto = $('.crypto-symbol-js').text().slice(0, 3).toLowerCase()
@@ -173,7 +183,8 @@ monetaryCheck = () ->
   #addCommas in digits_function.js
   $('#fiat-total-amount').text(total_fiat_amount).addCommas()
   $('#fiat-total-amount').prepend('$')
-  $('#fiat-total-amount').append('  |  $' + addCommas(fiat_current_price))
+  crypto_symbol = $('.crypto-symbol-js').text().slice(0, 3)
+  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price))
   
   $('table > tbody > tr > td:nth-child(3)').addCommas()
   $('table > tbody > tr > td:nth-child(3)').prepend('$')
@@ -186,7 +197,7 @@ validatePublicAddress = (address_text) ->
 
 makeQrcode = (inputText, inputLocation) ->
   qrcode = new QRCode(inputLocation, {
-    width: 110,
-    height: 110, 
+    width: 1320,
+    height: 1320, 
     })
   qrcode.makeCode(inputText)

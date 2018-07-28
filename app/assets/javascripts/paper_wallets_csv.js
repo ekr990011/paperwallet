@@ -77,15 +77,16 @@ $(document).ready(function() {
       
     //   $("#dvData > table > tbody").append("<tr><td>" + address_csv + "</td><td>" + address_btc + "</td><td>" + address_fiat + "</td></tr>");
     // });
+    var csvName = $("#export-input").val().trim() + '.csv';
     
     // CSV
-    var args = [$('#dvData>table'), 'export.csv'];
+    var args = [$('#dvData>table'), csvName];
 
     exportTableToCSV.apply(this, args);
 
     // If CSV, don't do event.preventDefault() or return false
     // We actually need this to be a typical hyperlink
-    
+    $('#export-input').val('');
     $('#address-text-input').focus();
   });
 });
