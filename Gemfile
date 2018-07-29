@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'twitter', '~> 5.3.1'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-twitter', '~> 1.0.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
