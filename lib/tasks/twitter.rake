@@ -1,6 +1,3 @@
-require 'dotenv/tasks'
-
-
 namespace :twitter do
   task :promote do
     
