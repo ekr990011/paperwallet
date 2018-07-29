@@ -1,4 +1,4 @@
-require 'dotenv/tasks'
+# require 'dotenv/tasks'
 
 
 namespace :twitter do
@@ -35,7 +35,7 @@ namespace :twitter do
     else
       direction = "DOWN"
     end
-    tweet = "#{name} price #{price}, #{direction} #{percentChange} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at https://goo.gl/oGkpTe" 
+    tweet = "#{name} price #{price}, #{direction} #{percentChange} percent in 24hrs.  Check your #{symbol} paperwallets quickly and securely at h" 
     puts tweet
 
 #  end 
