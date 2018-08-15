@@ -24,7 +24,7 @@ $(document).on 'turbolinks:load', ->
       $('#address-text-input').focus()
     else if duplicate
       $('.header').append('<div class="alert alert-warning alert-duplicate">Duplicate Address. Please Check!</div>')
-      $('.alert-invalid').fadeOut(8000, -> $s(this).remove() )
+      $('.alert-duplicate').fadeOut(8000, -> $s(this).remove() )
     else
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
@@ -47,7 +47,7 @@ $(document).on 'keypress', ->
       $('#address-text-input').focus()
     else if duplicate
       $('.header').append('<div class="alert alert-warning alert-duplicate">Duplicate Address. Please Check!</div>')
-      $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
+      $('.alert-duplicate').fadeOut(8000, -> $(this).remove() )
     else
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address. Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
@@ -68,7 +68,7 @@ $(document).on 'click', '.copy-address', ->
   clipboard.writeText(copy_text)
   $('.header').append('<span class="alert alert-warning alert-copy">Copied to Clipboard<span>')
   $('#address-text-input').focus()
-  # $('.alert-copy').fadeOut(4500, -> $(this).remove() )
+  $('.alert-copy').fadeOut(4500, -> $(this).remove() )
 
 $(document).on 'click', '.cryptoAddress', ->
   $('#modal-qrcode').empty()
