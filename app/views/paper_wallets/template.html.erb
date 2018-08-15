@@ -1,78 +1,79 @@
 <div class="header col-xs-12">
-    <div class="donation-img" id="donation-img">
-    </div>
-    <div>
-      <h1 class="donation-address", id="donation-address">1337ipJbP7U9mi9cdLngL3g5Napum7tWzM 
-        <span class="glyphicon glyphicon-copy"></span>
-      </h1>
-    </div>
-    <div class="col-xs-6">
-      <h3 class="slogan">Your Crypto Paper Wallet Checker !</h3>
-      <div class="btn-group pull-right">
+  <div class="donation-img col-xs-2" id="donation-img">
+  </div>
+  <div class="col-xs-10">
+    <h1 class="donation-address text-center" id="donation-address">1337ipJbP7U9mi9cdLngL3g5Napum7tWzM
+      <span class="glyphicon glyphicon-copy copy-address"></span>
+    </h1>
+  </div>
+  <div id="donation-address-hidden">
+    <h1 class="donation-address text-center">1337ipJbP7U9mi9cdLngL3g5Napum7tWzM
+      <span class="glyphicon glyphicon-copy"></span>
+    </h1>
+  </div>
+  <div class="col-xs-10">
+    <h3 class="slogan text-center">Your Crypto Paper Wallet Checker ! 
+      <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle crypto-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Bitcoin <span class="caret"></span><div class="hidden">1</div>
         </button>
         <ul class="dropdown-menu crypto-list-dropdown scrollable-menu">
         </ul>
       </div>
-      <h3 id="fiat-current-price"></h3>
-    </div>
-  
-  <div class="" id="info-button-panel">
-    <ul class="">
-      <li>Public Keys Only</li>
-      <li>Checked To Be Valid</li>
-      <li>One Address At A Time</li>
-    </ul>
+    </h3>
+    <h3 class="text-center" id="fiat-current-price"></h3>
   </div>
 </div>
 
-<div class="content">
-  <div class="left-side col-xs-3">
-    <div class="container form-inline col-xs-12">
-      <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
-      <label class="btn btn-lg btn-warning">
-        Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
-      </label><br /><br />
-      <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br />
-      <h5 class="export-filename">Export Filename : </h5>
-      <input class="form-control" type="text" id="export-input">
+<div class="left-side col-xs-3">
+  <div class="container form-inline col-xs-12">
+    <button class="btn btn-success btn-lg js-check-balance">Check Balance(s)</button><br /><br />
+    <label class="btn btn-lg btn-warning">
+      Load Spreadsheet<input class="hidden" type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
+    </label><br /><br />
+    <a href="#" class="export"><button class="btn btn-primary btn-lg">Export Spreadsheet</button></a><br />
+    <h5 class="export-filename">Export Filename : </h5>
+    <input class="form-control" type="text" id="export-input">
+  </div>
+</div>
+
+<div class="right-side col-xs-9">
+  <div class="boohoo form-inline">
+    <input class="form-control" type="text" id="address-text-input">
+    <button class="btn btn-info js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
+    <div class="info-box dropdown">
+      <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"  data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-question-sign"></span></button>
+      <ul class="dropdown-menu dropdown-menu-right info-button-panel">
+        <li class="text-center">Public Keys Only</li>
+        <li class="text-center">Checked To Be Valid</li>
+        <li class="text-center">One Address At A Time</li>
+      </ul>
     </div>
   </div>
-  
-  <div class="right-side col-xs-9">
-    <div class="boohoo form-inline">
-      <input class="form-control" type="text" id="address-text-input">
-      <button class="btn btn-info js-add-address" id="address-input-button">Enter a New Paper Wallet</button>
-      <div class="info-box">
-        <button type="button" class="btn btn-sm btn-default info-button" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
-      </div>
-    </div>
-    <div class="modal fade bs-example-modal-sm" index="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title"></h4>
-          </div>
-          <div class="modal-body">
-            <div id='modal-qrcode'></div>
-          </div>
+  <div class="modal fade bs-example-modal-sm" index="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <div id='modal-qrcode'></div>
         </div>
       </div>
     </div>
-    <div id="dvData">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-          	<td>Addresses : <span id="crypto-total-addresses"></span></td>
-          	<td class="crypto-symbol-js">BTC : <span id="crypto-total-amount"></span></td>
-          	<td>USD : <span id="fiat-total-amount"></span></td>
-          	<td>Remove</td>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
+  </div>
+  <div id="dvData">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+        	<td>Addresses : <span id="crypto-total-addresses"></span></td>
+        	<td class="crypto-symbol-js">BTC : <span id="crypto-total-amount"></span></td>
+        	<td>USD : <span id="fiat-total-amount"></span></td>
+        	<td>Remove</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
   </div>
 </div>

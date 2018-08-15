@@ -3,53 +3,43 @@
 /*}*/
 
 .header {
-  height: 21rem;
-  /*width: 100vw;*/
+  font-size: 3vw;
   position: relative;
 }
 
 .donation-img {
   float: left;
-  margin: auto;
-  width: 18rem;
-  height: auto;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
+  margin-top: 1.5rem;
 }
 
 .donation-img > img {
-  width: 19rem;
   margin: auto;
   border: 0.3rem solid white;
   border-radius: 0.3rem;
 }
 
 .donation-address {
-  float: left;
-  font-size: 3.45rem;
+  font-size: 1em;
   font-weight: bold;
-  margin-top: 7rem;
-  margin-left: 2.4rem;
+  margin-top: 5.5rem;
+  // margin-left: 2.4rem;
+}
+
+#donation-address-hidden {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
 }
 
 .slogan {
-  float: left;
-  font-size: 1.75rem;
+  font-size: 0.5em;
   font-weight: bold;
-  margin-top: 2rem;
-  margin-left: 5.8rem;
 }
 
 #fiat-current-price {
-  float: left;
-  font-size: 1.75rem;
+  font-size: 0.475em;
   font-weight: bold;
-  margin-top: 1rem;
-  margin-left: 5.8rem;
-}
-
-.crypto-list {
-  margin-top: 1rem;
+  margin: 0;
 }
 
 ul.crypto-list-dropdown {
@@ -60,34 +50,24 @@ ul.crypto-list-dropdown > li > a {
   color: white;
 }
 
-.content {
-  background-color: #464646;
-  height: 100%;
-  margin-top: 1%;
-}
-
 .left-side {
   background-color: #464646;
-  height: 100%;
-}
-
-.left-side > .container {
-  margin-top: 1%;
+  margin-top: 2rem;
 }
 
 .right-side {
   background-color: #464646;
+  font-size: 1.09vw;
+  margin-top: 2rem;
   height: 100%;
   overflow-y: auto;
 }
+
 
 .table-hover tbody tr:hover td {
     background: grey;
 }
 
-#address-input-button {
-  
-}
 
 #address-text-input {
    width: 60%;
@@ -98,18 +78,8 @@ ul.crypto-list-dropdown > li > a {
   position: relative;
 }
 
-.info-button {
-  
-}
-
-#info-button-panel {
-  position: absolute;
+.info-button-panel {
   background-color: #867d7e;
-  display: none;
-  bottom: 2.5%;
-  right: 0.5%;
-  padding-right: 2%;
-  padding-top: 0.65%;
   border-radius: 1rem;
 }
 
@@ -142,23 +112,34 @@ ul.crypto-list-dropdown > li > a {
 }
 
 .donation-address > .glyphicon-copy {
-  font-size: 1.9rem;
+  font-size: 0.7em;
 }
 
 .alert-copy {
   position: absolute;
   z-index: 10;
   top: 0;
-  margin-left: 43%;
-  font-size: 1.4rem;
+  left: 46.4%;
+  font-size: 0.3em;
+  border-radius: 3em;
+}
+
+.alert-duplicate {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 44%;
+  font-size: 0.3em;
+  border-radius: 3em;
 }
 
 .alert-invalid {
   position: absolute;
   z-index: 10;
   top: 0;
-  margin-left: 35%;
-  font-size: 1.4rem;
+  left: 42%;
+  font-size: 0.3em;
+  border-radius: 3em;
 }
 
 .export-filename {
@@ -169,6 +150,6 @@ ul.crypto-list-dropdown > li > a {
 
 .glyphicon:hover {
   background-color: #9d9d9d;
-  border: 0.1rem inset #b9acac;
+  border: 0.01rem inset #b9acac;
   border-radius: 0.3rem;
 }

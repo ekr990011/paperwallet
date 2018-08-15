@@ -34,12 +34,14 @@ crypto_list_array = [{
             symbol: 'nmc',
             donationAddress: 'NKX2XRAnucmc8RBTV9oZo8kgx7NP6K52JV',
             id: 3
-        },{
-            name: 'dogecoin',
-            symbol: 'doge',
-            donationAddress: 'DND5TbT834xsjBre1c6pREJYWMDWKAL1rc',
-            id: 74
-        },{
+        },
+        # {
+            # name: 'dogecoin',
+            # symbol: 'doge',
+            # donationAddress: 'DND5TbT834xsjBre1c6pREJYWMDWKAL1rc',
+            # id: 74
+        # },
+        {
             name: 'ethereumclassic',
             symbol: 'etc',
             donationAddress: 'Ethereum Classic Paper Wallet Checker!',
@@ -54,12 +56,14 @@ crypto_list_array = [{
             symbol: 'btg',
             donationAddress: 'GMbBJi6x6osdKnCnQUZqUWgD3fGztzik1h',
             id: 2083
-        },{
-            name: 'dash',
-            symbol: 'dash',
-            donationAddress: 'XckPoTubxQ8PbY9VAYCnSZarpsq6BFNUHA',
-            id: 131
-        },{
+        },
+        # {
+            # name: 'dash',
+            # symbol: 'dash',
+            # donationAddress: 'XckPoTubxQ8PbY9VAYCnSZarpsq6BFNUHA',
+            # id: 131
+        # },
+        {
             name: 'neo',
             symbol: 'neo',
             donationAddress: 'Neo Paper Wallet Checker!',
@@ -84,12 +88,14 @@ crypto_list_array = [{
             symbol: 'btcz',
             donationAddress: 'Bitcoinz Paper Wallet Checker!',
             id: 2041
-        },{
+        },
+        {
             name: 'bitcoinprivate',
             symbol: 'btcp',
             donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
             id: 2575
-        },{
+        },
+        {
             name: 'zencash',
             symbol: 'zen',
             donationAddress: 'Zen Paper Wallet Checker!',
@@ -142,7 +148,7 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
       $('.crypto-list').html($(this).find('a').text() + ' <span class="caret"></span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>')
       $('.donation-address').text(crypto_list_array[i].donationAddress)
-      $('.donation-address').append(' <span class="glyphicon glyphicon-copy"></span>')
+      $('.donation-address').append(' <span class="glyphicon glyphicon-copy copy-address"></span>')
     crypto_list_array_item = crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1)
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>' + '</li>')
@@ -152,7 +158,6 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
   
 makeQrcode = () ->
   if $('.donation-img > img')
-    # console.log('not null')
     $('.donation-img > img').remove()
     $('.donation-img > canvas').remove()
   qrcode = new QRCode(document.getElementById("donation-img"), {
@@ -162,6 +167,10 @@ makeQrcode = () ->
   elText = document.getElementById("donation-address").innerText
   
   if $(".donation-address:contains('!')").text() == ""
+    $('.content').hide()
     $('#donation-img').hide()
+    # $('#donation-img > img').css('display', 'none')
     qrcode.makeCode(elText)
+    $('.donation-img > img').addClass('img-responsive')
     $('#donation-img').show(1000)
+    $('.content').show(1000)

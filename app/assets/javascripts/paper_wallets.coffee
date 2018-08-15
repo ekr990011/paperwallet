@@ -15,6 +15,7 @@ $(document).on 'turbolinks:load', ->
     $('table > tbody > tr').each ->
       if address_text == $('table > tbody > tr:nth-child(' + i + ') > td').text()
         valid = false
+        duplicate = true
       i++ 
         
     if valid
@@ -22,8 +23,8 @@ $(document).on 'turbolinks:load', ->
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else if duplicate
-      $('.header').append('<div class="alert alert-warning alert-invalid">Duplicate Address. Please Check!</div>')
-      $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
+      $('.header').append('<div class="alert alert-warning alert-duplicate">Duplicate Address. Please Check!</div>')
+      $('.alert-invalid').fadeOut(8000, -> $s(this).remove() )
     else
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
@@ -45,7 +46,7 @@ $(document).on 'keypress', ->
       $('tbody').append('<tr><td class="cryptoAddress">' + address_text + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
       $('#address-text-input').focus()
     else if duplicate
-      $('.header').append('<div class="alert alert-warning alert-invalid">Duplicate Address. Please Check!</div>')
+      $('.header').append('<div class="alert alert-warning alert-duplicate">Duplicate Address. Please Check!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
     else
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address. Please Check Input!</div>')
@@ -62,12 +63,12 @@ $(document).on 'click', 'span.glyphicon.glyphicon-remove', ->
   $('#address-text-input').focus()
   monetaryCheck()
   
-$(document).on 'click', '.donation-address > span.glyphicon.glyphicon-copy', ->
-  copy_text = $('.donation-address').text().trim()
+$(document).on 'click', '.copy-address', ->
+  copy_text = $('#donation-address').text().trim()
   clipboard.writeText(copy_text)
-  $('.header').append('<div class="alert alert-warning alert-copy">Copied to Clipboard</div>')
+  $('.header').append('<span class="alert alert-warning alert-copy">Copied to Clipboard<span>')
   $('#address-text-input').focus()
-  $('.alert-copy').fadeOut(4500, -> $(this).remove() )
+  # $('.alert-copy').fadeOut(4500, -> $(this).remove() )
 
 $(document).on 'click', '.cryptoAddress', ->
   $('#modal-qrcode').empty()
@@ -100,7 +101,6 @@ $(document).on 'click', '.js-check-balance', ->
       bitcoinCrypto()
     else
       cryptoAddressAmount()
-      
     return 0
   )
   
@@ -193,7 +193,7 @@ monetaryCheck = () ->
   $('#fiat-total-amount').text(total_fiat_amount).addCommas()
   $('#fiat-total-amount').prepend('$')
   crypto_symbol = $('.crypto-symbol-js').text().slice(0, 3)
-  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price))
+  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price.toFixed(2)))
   
   $('table > tbody > tr > td:nth-child(3)').addCommas()
   $('table > tbody > tr > td:nth-child(3)').prepend('$')
@@ -210,3 +210,4 @@ makeQrcode = (inputText, inputLocation) ->
     height: 1320, 
     })
   qrcode.makeCode(inputText)
+  $('.donation-img > img').addClass('img-responsive')

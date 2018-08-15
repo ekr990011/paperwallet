@@ -112,6 +112,8 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    normalize-scss (7.0.1)
+      sass (~> 3.3)
     oauth (0.5.4)
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   listen (>= 3.0.5, < 3.2)
+  normalize-scss
   omniauth (~> 1.6, >= 1.6.1)
   omniauth-twitter (~> 1.0.1)
   pg (= 0.21.0)
