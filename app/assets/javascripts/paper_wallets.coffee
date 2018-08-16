@@ -29,7 +29,7 @@ $(document).on 'turbolinks:load', ->
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
       
-$(document).on 'keypress', ->
+$(document).on 'keypress', (event) ->
   if event.keyCode is 13
     address_text = $('#address-text-input').val().trim()
     valid = validatePublicAddress(address_text)
