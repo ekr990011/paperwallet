@@ -12,6 +12,10 @@
   margin-top: 1.5rem;
 }
 
+.donation-img > canvas {
+  display: none;
+}
+
 .donation-img > img {
   margin: auto;
   border: 0.3rem solid white;

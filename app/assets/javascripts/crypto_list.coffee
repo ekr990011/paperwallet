@@ -149,7 +149,8 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>' + '</li>')
     i += 1
-    
+  
+  $('#address-text-input').focus()    
   makeQrcode()
   
 makeQrcode = () ->
@@ -163,10 +164,8 @@ makeQrcode = () ->
   elText = document.getElementById("donation-address").innerText
   
   if $(".donation-address:contains('!')").text() == ""
-    $('.content').hide()
     $('#donation-img').hide()
     # $('#donation-img > img').css('display', 'none')
     qrcode.makeCode(elText)
     $('.donation-img > img').addClass('img-responsive')
-    $('#donation-img').show(1000)
-    $('.content').show(1000)
+    $('#donation-img').fadeIn(1500)

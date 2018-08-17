@@ -5,7 +5,7 @@
 $(document).on 'turbolinks:load', ->
   $('#donation-img').hide()
   makeQrcode(document.getElementById("donation-address").innerText, document.getElementById("donation-img"))
-  $('#donation-img').show(1000)
+  $('#donation-img').fadeIn(1500)
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
@@ -135,7 +135,7 @@ bitcoinCrypto = () ->
   )
   
 cryptoAddressAmount = () ->
-  crypto = $('.crypto-symbol-js').text().slice(0, 3).toLowerCase()
+  crypto = $('.crypto-symbol-js').text().replace(' : ', '').toLowerCase()
   addresses_to_check = ''
   $('table > tbody > tr').each ->
     address_to_check = $(this).children('td:first').text()
