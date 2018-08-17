@@ -200,7 +200,7 @@ monetaryCheck = () ->
 
 
 validatePublicAddress = (address_text) ->
-  crypto_to_check = $('.crypto-symbol-js').text().slice(0, 3)
+  crypto_to_check = $('.crypto-symbol-js').text().replace(' : ', '')
   WAValidator.validate(address_text, crypto_to_check)
   
 

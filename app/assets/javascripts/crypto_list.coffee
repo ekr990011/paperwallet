@@ -34,14 +34,12 @@ crypto_list_array = [{
             symbol: 'nmc',
             donationAddress: 'NKX2XRAnucmc8RBTV9oZo8kgx7NP6K52JV',
             id: 3
-        },
-        # {
-            # name: 'dogecoin',
-            # symbol: 'doge',
-            # donationAddress: 'DND5TbT834xsjBre1c6pREJYWMDWKAL1rc',
-            # id: 74
-        # },
-        {
+        },{
+            name: 'dogecoin',
+            symbol: 'doge',
+            donationAddress: 'DND5TbT834xsjBre1c6pREJYWMDWKAL1rc',
+            id: 74
+        },{
             name: 'ethereumclassic',
             symbol: 'etc',
             donationAddress: 'Ethereum Classic Paper Wallet Checker!',
@@ -56,14 +54,12 @@ crypto_list_array = [{
             symbol: 'btg',
             donationAddress: 'GMbBJi6x6osdKnCnQUZqUWgD3fGztzik1h',
             id: 2083
-        },
-        # {
-            # name: 'dash',
-            # symbol: 'dash',
-            # donationAddress: 'XckPoTubxQ8PbY9VAYCnSZarpsq6BFNUHA',
-            # id: 131
-        # },
-        {
+        },{
+            name: 'dash',
+            symbol: 'dash',
+            donationAddress: 'XckPoTubxQ8PbY9VAYCnSZarpsq6BFNUHA',
+            id: 131
+        },{
             name: 'neo',
             symbol: 'neo',
             donationAddress: 'Neo Paper Wallet Checker!',
@@ -89,12 +85,12 @@ crypto_list_array = [{
             donationAddress: 'Bitcoinz Paper Wallet Checker!',
             id: 2041
         },
-        {
-            name: 'bitcoinprivate',
-            symbol: 'btcp',
-            donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
-            id: 2575
-        },
+        # {
+        #     name: 'bitcoinprivate',
+        #     symbol: 'btcp',
+        #     donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
+        #     id: 2575
+        # },
         {
             name: 'zencash',
             symbol: 'zen',
