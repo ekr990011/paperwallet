@@ -19,8 +19,8 @@ $(document).ready(function() {
 
         return $cols.map(function(j, col) {
           var $col = $(col),
-            text = $col.text();
-
+            text = $col.text().replace('Remove', '');
+              
           return text.replace(/"/g, '""'); // escape double quotes
 
         }).get().join(tmpColDelim);
