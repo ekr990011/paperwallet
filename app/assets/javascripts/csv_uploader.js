@@ -50,7 +50,7 @@ function drawOutput(lines){
     		var address_text_to_check = lines[i][j].replace(/['"]+/g, '');
     		var valid = validatePublicAddress(address_text_to_check);
     		if (valid){
-    			$('tbody').append('<tr><td>' + address_text_to_check + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
+    			$('tbody').append('<tr><td class="cryptoAddress">' + address_text_to_check + '</td><td></td><td></td><td><span class="glyphicon glyphicon-remove"></span></td></tr>')
     		}
 		}
 	}
