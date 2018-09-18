@@ -192,3 +192,4 @@ makeQrcode = () ->
     qrcode.makeCode(elText)
     $('.donation-img > img').addClass('img-responsive')
     $('#donation-img').fadeIn(1500)
+    

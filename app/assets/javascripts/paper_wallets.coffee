@@ -201,3 +201,4 @@ makeQrcode = (inputText, inputLocation) ->
     })
   qrcode.makeCode(inputText)
   $('.donation-img > img').addClass('img-responsive')
+  
