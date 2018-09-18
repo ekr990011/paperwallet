@@ -9,6 +9,7 @@ $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
+    console.log(address_text)
     valid = validatePublicAddress(address_text)
     duplicate = false
     i = 1
@@ -190,7 +191,7 @@ monetaryCheck = () ->
   $('#crypto-total-amount').text(total_crypto_amount)
   
   #addCommas in digits_function.js
-  $('#fiat-total-amount').text(total_fiat_amount).addCommas()
+  $('#fiat-total-amount').text(total_fiat_amount.toFixed(2)).addCommas()
   $('#fiat-total-amount').prepend('$')
   crypto_symbol = $('.crypto-symbol-js').text().slice(0, 3)
   $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price.toFixed(2)))
@@ -198,12 +199,10 @@ monetaryCheck = () ->
   $('table > tbody > tr > td:nth-child(3)').addCommas()
   $('table > tbody > tr > td:nth-child(3)').prepend('$')
 
-
 validatePublicAddress = (address_text) ->
-  crypto_to_check = $('.crypto-symbol-js').text().replace(' : ', '')
+  crypto_to_check = $('.crypto-symbol-js').text().replace(/\d/g, '').replace(/\W/g, '')
   WAValidator.validate(address_text, crypto_to_check)
   
-
 makeQrcode = (inputText, inputLocation) ->
   qrcode = new QRCode(inputLocation, {
     width: 1320,
