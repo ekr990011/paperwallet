@@ -9,12 +9,14 @@ crypto_list_array = [{
             symbol: 'eth',
             donationAddress: '0x94483b123b422d2Ab61fC459118667513956144E',
             id: 1027
-        },{
-            name: 'ripple',
-            symbol: 'xrp',
-            donationAddress: 'rJ8o2N7MajfpCVDJHyjWcu7yo3knvHHXfN',
-            id: 52
-        },{
+        },
+        # {
+            # name: 'ripple',
+            # symbol: 'xrp',
+            # donationAddress: 'rJ8o2N7MajfpCVDJHyjWcu7yo3knvHHXfN',
+            # id: 52
+        # },
+        {
             name: 'bitcoincash',
             symbol: 'bch',
             donationAddress: '1GDLQvcZY8TS56gf6X8Hm94B8wRkbtV438',
@@ -165,7 +167,6 @@ makeQrcode = () ->
   
   if $(".donation-address:contains('!')").text() == ""
     $('#donation-img').hide()
-    # $('#donation-img > img').css('display', 'none')
     qrcode.makeCode(elText)
     $('.donation-img > img').addClass('img-responsive')
     $('#donation-img').fadeIn(1500)

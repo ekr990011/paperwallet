@@ -9,7 +9,6 @@ $(document).on 'turbolinks:load', ->
   $('#address-text-input').focus()
   $('#address-input-button').click ->
     address_text = $('#address-text-input').val().trim()
-    console.log(address_text)
     valid = validatePublicAddress(address_text)
     duplicate = false
     i = 1
@@ -118,12 +117,9 @@ bitcoinCrypto = () ->
   addresses_object_response = $.getJSON("https://blockchain.info/balance?active=" + addresses_to_check + "&cors=true", (data, status) ->
     address_object_keys = Object.keys(data)
     address_object_keys_length = address_object_keys.length
-    
-    # address_btc_total = data[key]["final_balance"]/100000000
     i = 0
+    
     while( i < (address_object_keys_length) )
-      # console.log( address_object_keys[i] )
-      # console.log( data[ address_object_keys[i] ]["final_balance"]/100000000 )
       address_btc_total = data[ address_object_keys[i] ]["final_balance"]/100000000
       
       #crypto & fiat into address tr seperated by .next()
