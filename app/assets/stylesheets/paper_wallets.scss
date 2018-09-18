@@ -46,11 +46,19 @@
   margin: 0;
 }
 
-ul.crypto-list-dropdown {
+.crypto-list-dropdown {
   background-color: #464646;
 }
 
-ul.crypto-list-dropdown > li > a {
+.crypto-list-dropdown > li > a {
+  color: white;
+}
+
+.fiat-list-dropdown {
+  background-color: #464646;
+}
+
+.fiat-list-dropdown > li > a {
   color: white;
 }
 
@@ -138,6 +146,15 @@ ul.crypto-list-dropdown > li > a {
 }
 
 .alert-invalid {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 42%;
+  font-size: 0.3em;
+  border-radius: 3em;
+}
+
+.alert-csv-invalid {
   position: absolute;
   z-index: 10;
   top: 0;

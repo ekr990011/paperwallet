@@ -119,16 +119,38 @@ crypto_list_array = [{
             donationAddress: 'DKkftwDYUQpMZCcDmcgtbLnCk5sf1qV9Hi',
             id: 109
         }]
-                    
+
+fiat_list_array = [
+    {fiat: 'USD'},{fiat: 'AUD'},{fiat: 'BRL'},{fiat: 'CAD'},{fiat: 'CHF'},{fiat: 'CLP'},{fiat: 'CNY'},
+    {fiat: 'CZK'},{fiat: 'DKK'},{fiat: 'EUR'},{fiat: 'GBP'},{fiat: 'HKD'},{fiat: 'HUF'},{fiat: 'IDR'},
+    {fiat: 'ILS'},{fiat: 'INR'},{fiat: 'JPY'},{fiat: 'KRW'},{fiat: 'MXN'},{fiat: 'MYR'},{fiat: 'NOK'},
+    {fiat: 'NZD'},{fiat: 'PHP'},{fiat: 'PKR'},{fiat: 'PLN'},{fiat: 'RUB'},{fiat: 'SEK'},{fiat: 'SGD'},
+    {fiat: 'THB'},{fiat: 'TRX'},{fiat: 'TRY'},{fiat: 'TWD'},{fiat: 'ZAR'}
+]
+            
 $(document).on 'turbolinks:load', ->
   i = 0
   while i < crypto_list_array.length
     unless i == 0  
-      $('.crypto-list-dropdown').append('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span><div class="hidden">'+ crypto_list_array[i].id + '</div></li>')
+      $('.crypto-list-dropdown').append('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">' + crypto_list_array[i].symbol + '</span><div class="hidden">'+ crypto_list_array[i].id + '</div></li>')
+    i += 1
+  
+  i = 0
+  while i < fiat_list_array.length
+    unless i == 0
+      $('.fiat-list-dropdown').append('<li><a href="x">' + fiat_list_array[i].fiat + '</a></li>')
     i += 1
     
-$(document).on 'click', '.crypto-list-dropdown > li', (e) ->
-  e.preventDefault()
+$(document).on 'click', '.fiat-list-dropdown > li', (event) ->
+  event.preventDefault()
+  old_fiat_item = $('.fiat-list').text().trim()
+  $('.fiat-list').text($(this).text()).append(' <span class="caret"></span>')
+  $('.fiat-list-dropdown').prepend('<li><a href="x">' + old_fiat_item + '</a></li>')
+  
+  $('.fiat-symbol-js').text($(this).text() + " : ").append('<span id="fiat-total-amount"></span>')
+    
+$(document).on 'click', '.crypto-list-dropdown > li', (event) ->
+  event.preventDefault()
   old_crypto_item = $('.crypto-list').text()
   old_crypto_item_replace = $('.crypto-list > div').text()
   old_crypto_item = old_crypto_item.replace(old_crypto_item_replace, "").trim()

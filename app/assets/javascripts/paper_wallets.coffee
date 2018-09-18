@@ -24,7 +24,7 @@ $(document).on 'turbolinks:load', ->
       $('#address-text-input').focus()
     else if duplicate
       $('.header').append('<div class="alert alert-warning alert-duplicate">Duplicate Address. Please Check!</div>')
-      $('.alert-duplicate').fadeOut(8000, -> $s(this).remove() )
+      $('.alert-duplicate').fadeOut(8000, -> $(this).remove() )
     else
       $('.header').append('<div class="alert alert-warning alert-invalid">Invalid Address, Please Check Input!</div>')
       $('.alert-invalid').fadeOut(8000, -> $(this).remove() )
@@ -92,8 +92,9 @@ addresses_to_check = ''
 $(document).on 'click', '.js-check-balance', ->
   # fiat currency check 
   crypto_coinmarketcap = $('.crypto-list > div').text().trim().toLowerCase()
-  $.getJSON("https://api.coinmarketcap.com/v2/ticker/" + crypto_coinmarketcap + "/", (result) ->
-    fiat_current_price = result.data.quotes.USD.price
+  fiat_symbol = $('.fiat-list').text().trim()
+  $.getJSON("https://api.coinmarketcap.com/v2/ticker/" + crypto_coinmarketcap + "/?convert=" + fiat_symbol, (result) ->
+    fiat_current_price = result.data.quotes[fiat_symbol].price
   
     # crypto check
     crypto = $('.crypto-symbol-js').text().slice(0, 3).toLowerCase()
@@ -141,21 +142,15 @@ cryptoAddressAmount = () ->
     else
       addresses_to_check = address_to_check
   
-  # crypto = $('.crypto-symbol-js').text().slice(0, 3).toLowerCase()
   # https://multiexplorer.com/api/address_balance/private5?addresses=16DsrC7mUZG7ZYJR1T6rJo16aogKicwAi9,1MgGUeGKTWjTGM8FYmVBbYhoPznZvos5cg,1NiNja1bUmhSoTXozBRBEtR8LeF9TGbZBN&currency=btc
   addresses_object_response = $.get("https://multiexplorer.com/api/address_balance/private5?addresses=" + addresses_to_check + "&currency=" + crypto , (data, status) ->
     address_object_keys = Object.keys(data['balance'])
     address_object_keys_length = address_object_keys.length
     
-    # console.log(address_object_keys_length)
     i = 0
     while( i < (address_object_keys_length) )
-      # console.log(address_object_keys[i] )
       unless address_object_keys[i] == 'total_balance'
-        # console.log(data['balance'][address_object_keys[i]])
         address_crypto_total = data['balance'][address_object_keys[i]]
-        #crypto & fiat into address tr seperated by .next()
-        
         $('table > tbody > tr > td:contains(' + address_object_keys[i] + ')').next().text(address_crypto_total).next().text((fiat_current_price * address_crypto_total).toFixed(2))
       i += 1
       
@@ -180,7 +175,6 @@ monetaryCheck = () ->
   while i < crypto_amount_length
     total_crypto_amount += parseFloat($('table > tbody > tr > td:nth-child(2)').eq(i).text())
     total_fiat_amount += parseFloat($('table > tbody > tr > td:nth-child(3)').eq(i).text())
-    # console.log total_fiat_amount
     i += 1
   
   $('#crypto-total-addresses').text(crypto_amount_length)
@@ -190,7 +184,8 @@ monetaryCheck = () ->
   $('#fiat-total-amount').text(total_fiat_amount.toFixed(2)).addCommas()
   $('#fiat-total-amount').prepend('$')
   crypto_symbol = $('.crypto-symbol-js').text().slice(0, 3)
-  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / USD : $' + addCommas(fiat_current_price.toFixed(2)))
+  fiat_symbol = $('.fiat-list').text().trim()
+  $('#fiat-current-price').text('Current ' + crypto_symbol + ' / ' + fiat_symbol + ' : $' + addCommas(fiat_current_price.toFixed(2)))
   
   $('table > tbody > tr > td:nth-child(3)').addCommas()
   $('table > tbody > tr > td:nth-child(3)').prepend('$')
