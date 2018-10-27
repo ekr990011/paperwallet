@@ -1,5 +1,6 @@
-require 'dotenv/tasks'
-
+if Rails.env == "development" 
+  require 'dotenv/tasks'
+end
 
 namespace :twitter do
   task :promote do
@@ -39,7 +40,7 @@ namespace :twitter do
     puts tweet
 
 #  end 
-  client.update(tweet)
+  # client.update(tweet)
     
     
     
