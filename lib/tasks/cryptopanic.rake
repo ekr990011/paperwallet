@@ -30,10 +30,10 @@ namespace :cryptopanic do
   number = cryptoPanic_data["results"].length
   # puts "count #{number}"
   
-  puts cryptoPanic_data["results"][19]
+  puts cryptoPanic_data["results"][0]
   
-  title = cryptoPanic_data["results"][1]["title"]
-  link = cryptoPanic_data["results"][4]["url"]
+  title = cryptoPanic_data["results"][0]["title"]
+  link = cryptoPanic_data["results"][0]["url"]
   
   puts " "
   puts title
