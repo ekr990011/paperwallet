@@ -40,6 +40,7 @@ namespace :twitter do
 
 #  end 
   # client.update(tweet)
+  sleep(15)
   
   # Youtube tweet
   
@@ -56,6 +57,7 @@ namespace :twitter do
   youTweet = "Latest Crypto News from PaperWallet Checker goo.gl/oGkpTe: #{ytTitle} #{url}"
   
   # client.update(youTweet)
+  sleep(15)
   
   
   # cryptoPanic tweet
