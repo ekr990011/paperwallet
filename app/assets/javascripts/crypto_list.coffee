@@ -9,12 +9,14 @@ crypto_list_array = [{
             symbol: 'eth',
             donationAddress: '0x94483b123b422d2Ab61fC459118667513956144E',
             id: 1027
-        },{
-            name: 'ripple',
-            symbol: 'xrp',
-            donationAddress: 'rJ8o2N7MajfpCVDJHyjWcu7yo3knvHHXfN',
-            id: 52
-        },{
+        },
+        # {
+            # name: 'ripple',
+            # symbol: 'xrp',
+            # donationAddress: 'rJ8o2N7MajfpCVDJHyjWcu7yo3knvHHXfN',
+            # id: 52
+        # },
+        {
             name: 'bitcoincash',
             symbol: 'bch',
             donationAddress: '1GDLQvcZY8TS56gf6X8Hm94B8wRkbtV438',
@@ -84,12 +86,14 @@ crypto_list_array = [{
             symbol: 'btcz',
             donationAddress: 'Bitcoinz Paper Wallet Checker!',
             id: 2041
-        },{
-            name: 'bitcoinprivate',
-            symbol: 'btcp',
-            donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
-            id: 2575
-        },{
+        },
+        # {
+        #     name: 'bitcoinprivate',
+        #     symbol: 'btcp',
+        #     donationAddress: 'zkWoKvGLVc3Te6cjrCCcTGcihvuCrJqkpFuD669Vk8fjbFeCM2q6TfYvWXeg23MuQBkGEWn8ppWRA7FQDp2cLmkBPURw439',
+        #     id: 2575
+        # },
+        {
             name: 'zencash',
             symbol: 'zen',
             donationAddress: 'Zen Paper Wallet Checker!',
@@ -115,16 +119,38 @@ crypto_list_array = [{
             donationAddress: 'DKkftwDYUQpMZCcDmcgtbLnCk5sf1qV9Hi',
             id: 109
         }]
-                    
+
+fiat_list_array = [
+    {fiat: 'USD'},{fiat: 'AUD'},{fiat: 'BRL'},{fiat: 'CAD'},{fiat: 'CHF'},{fiat: 'CLP'},{fiat: 'CNY'},
+    {fiat: 'CZK'},{fiat: 'DKK'},{fiat: 'EUR'},{fiat: 'GBP'},{fiat: 'HKD'},{fiat: 'HUF'},{fiat: 'IDR'},
+    {fiat: 'ILS'},{fiat: 'INR'},{fiat: 'JPY'},{fiat: 'KRW'},{fiat: 'MXN'},{fiat: 'MYR'},{fiat: 'NOK'},
+    {fiat: 'NZD'},{fiat: 'PHP'},{fiat: 'PKR'},{fiat: 'PLN'},{fiat: 'RUB'},{fiat: 'SEK'},{fiat: 'SGD'},
+    {fiat: 'THB'},{fiat: 'TRX'},{fiat: 'TRY'},{fiat: 'TWD'},{fiat: 'ZAR'}
+]
+            
 $(document).on 'turbolinks:load', ->
   i = 0
   while i < crypto_list_array.length
     unless i == 0  
-      $('.crypto-list-dropdown').append('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span><div class="hidden">'+ crypto_list_array[i].id + '</div></li>')
+      $('.crypto-list-dropdown').append('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">' + crypto_list_array[i].symbol + '</span><div class="hidden">'+ crypto_list_array[i].id + '</div></li>')
+    i += 1
+  
+  i = 0
+  while i < fiat_list_array.length
+    unless i == 0
+      $('.fiat-list-dropdown').append('<li><a href="x">' + fiat_list_array[i].fiat + '</a></li>')
     i += 1
     
-$(document).on 'click', '.crypto-list-dropdown > li', (e) ->
-  e.preventDefault()
+$(document).on 'click', '.fiat-list-dropdown > li', (event) ->
+  event.preventDefault()
+  old_fiat_item = $('.fiat-list').text().trim()
+  $('.fiat-list').text($(this).text()).append(' <span class="caret"></span>')
+  $('.fiat-list-dropdown').prepend('<li><a href="x">' + old_fiat_item + '</a></li>')
+  
+  $('.fiat-symbol-js').text($(this).text() + " : ").append('<span id="fiat-total-amount"></span>')
+    
+$(document).on 'click', '.crypto-list-dropdown > li', (event) ->
+  event.preventDefault()
   old_crypto_item = $('.crypto-list').text()
   old_crypto_item_replace = $('.crypto-list > div').text()
   old_crypto_item = old_crypto_item.replace(old_crypto_item_replace, "").trim()
@@ -142,17 +168,17 @@ $(document).on 'click', '.crypto-list-dropdown > li', (e) ->
     if ($(this).find('a').text().toLowerCase()) == (crypto_list_array[i].name)
       $('.crypto-list').html($(this).find('a').text() + ' <span class="caret"></span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>')
       $('.donation-address').text(crypto_list_array[i].donationAddress)
-      $('.donation-address').append(' <span class="glyphicon glyphicon-copy"></span>')
+      $('.donation-address').append(' <span class="glyphicon glyphicon-copy copy-address"></span>')
     crypto_list_array_item = crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1)
     if crypto_list_array_item == old_crypto_item
       $('.crypto-list-dropdown').prepend('<li><a href="#">' + crypto_list_array[i].name.charAt(0).toUpperCase() + crypto_list_array[i].name.slice(1) + '</a><span class="hidden">'+ crypto_list_array[i].symbol + '</span>' + '<div class="hidden">' + crypto_list_array[i].id + '</div>' + '</li>')
     i += 1
-    
+  
+  $('#address-text-input').focus()    
   makeQrcode()
   
 makeQrcode = () ->
   if $('.donation-img > img')
-    # console.log('not null')
     $('.donation-img > img').remove()
     $('.donation-img > canvas').remove()
   qrcode = new QRCode(document.getElementById("donation-img"), {
@@ -164,4 +190,6 @@ makeQrcode = () ->
   if $(".donation-address:contains('!')").text() == ""
     $('#donation-img').hide()
     qrcode.makeCode(elText)
-    $('#donation-img').show(1000)
+    $('.donation-img > img').addClass('img-responsive')
+    $('#donation-img').fadeIn(1500)
+    

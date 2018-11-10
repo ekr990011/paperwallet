@@ -19,8 +19,8 @@ $(document).ready(function() {
 
         return $cols.map(function(j, col) {
           var $col = $(col),
-            text = $col.text();
-
+            text = $col.text().replace('Remove', '');
+              
           return text.replace(/"/g, '""'); // escape double quotes
 
         }).get().join(tmpColDelim);
@@ -70,23 +70,25 @@ $(document).ready(function() {
 
   // This must be a hyperlink
   $(".export").on('click', function(event) {
-    // $('#front-page-background > div.col-md-12').each( function( index ) { 
-    //   var address_csv = $(this).children("div:nth-child(1)").text();
-    //   var address_btc = $(this).children("div:nth-child(2)").text();
-    //   var address_fiat = $(this).children("div:nth-child(3)").text();
-      
-    //   $("#dvData > table > tbody").append("<tr><td>" + address_csv + "</td><td>" + address_btc + "</td><td>" + address_fiat + "</td></tr>");
-    // });
     var csvName = $("#export-input").val().trim() + '.csv';
     
-    // CSV
-    var args = [$('#dvData>table'), csvName];
-
-    exportTableToCSV.apply(this, args);
-
-    // If CSV, don't do event.preventDefault() or return false
-    // We actually need this to be a typical hyperlink
-    $('#export-input').val('');
-    $('#address-text-input').focus();
+    if (csvName !== '.csv') {
+      // CSV
+      var args = [$('#dvData>table'), csvName];
+  
+      exportTableToCSV.apply(this, args);
+  
+      // If CSV, don't do event.preventDefault() or return false
+      // We actually need this to be a typical hyperlink
+      $('#export-input').val('');
+      $('#address-text-input').focus();
+    } else {
+      event.preventDefault();
+      $('.header').append('<div class="alert alert-warning alert-csv-invalid">Give the Spreadsheet a Name!</div>');
+      $('.alert-csv-invalid').fadeOut(8000, function() {
+        $(this).remove();
+      });
+    }
+      
   });
 });
